@@ -73,11 +73,9 @@ angular.module('lookoutApp',[
             throw new Error(err)
           });
         }
+        return {
+          getAll : getAll,
+          getFiltered : getFiltered,
+          getEvent : getEvent
       }
-
-    return {
-      getAll : getAll,
-      getFiltered : getFiltered,
-      getEvent : getEvent
-    }
   });
