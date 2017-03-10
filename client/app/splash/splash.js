@@ -1,2 +1,2 @@
 angular.module('lookoutApp.splash', [])
-.controller('splashCtrl', function(){})
+.controller('splashCtrl', function() {});
