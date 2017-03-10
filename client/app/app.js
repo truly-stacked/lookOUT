@@ -1,28 +1,29 @@
-angular.module('lookoutApp',[])
+angular.module('lookoutApp',[
+  'lookoutApp.event',
+  'lookoutApp.results',
+  'lookoutApp.splash',
+  'ngRoute'
+])
   .config(function($routeProvider){
     $routeProvider
-
       .when('/', {
-        templateUrl: 'splash/splash.html',
+        templateUrl: 'app/splash/splash.html',
         controller: 'splashCtrl'
       })
-
       .when('/splash', {
-        templateUrl: 'splash/splash.html',
+        templateUrl: 'app/splash/splash.html',
         controller: 'splashCtrl'
       })
-
-      .when('/events', {
-        templateUrl: 'events/event.html',
-        controller: 'eventsCtrl'
+      .when('/event', {
+        templateUrl: 'app/event/event.html',
+        controller: 'eventCtrl'
       })
-
       .when('/results', {
-        templateUrl: 'results/results.html',
+        templateUrl: 'app/results/results.html',
         controller: 'resultsCtrl'
       })
   })
-  .factory('dataFactory'function($http){
+  .factory('dataFactory', function($http){
     var getAll = function(){
       console.log("Got all events!")
     }
