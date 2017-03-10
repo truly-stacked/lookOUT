@@ -1,2 +1,6 @@
 angular.module('lookoutApp.splash', [])
-.controller('splashCtrl', function() {});
+.controller('splashCtrl', function($scope) {
+  $scope.getEvents = function(){
+    console.log("Grabbing events!")
+  }
+});
