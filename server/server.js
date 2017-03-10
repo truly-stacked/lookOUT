@@ -1,10 +1,11 @@
 const express = require('express');
+const morgan = require ('morgan');
+const bodyParser = require('body-parser');
 
 const app = express();
 
-//middleware to configure application
-require ('/middleware.js')(app, express);
+app.use(morgan('dev'));
+app.use(bodyParser.json());
+app.use(express.static('./client'));
 
 app.listen(8888);
-
-module.export = app;
