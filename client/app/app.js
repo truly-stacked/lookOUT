@@ -24,15 +24,15 @@ angular.module('lookoutApp',[])
   })
   .factory('dataFactory'function($http){
     var getAll = function(){
-
+      console.log("Got all events!")
     }
 
     var getFiltered = function(catagory){
-
+      console.log("Got filtered events!")
     }
 
     var getEvent = function(eventID){
-
+      console.log("Got a single event!")
     }
 
     return {
