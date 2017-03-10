@@ -1,0 +1,9 @@
+body {
+  font-family: 'Crete Round', serif;
+}
+
+.align {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
