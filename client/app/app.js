@@ -40,5 +40,5 @@ angular.module('lookoutApp',[])
       getFiltered : getFiltered,
       getEvent : getEvent
     }
-
+ 
   })
