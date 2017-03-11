@@ -1,6 +1,8 @@
 angular.module('lookoutApp.splash', [])
-.controller('splashCtrl', function($scope) {
+.controller('splashCtrl', function($scope, dataFactory) {
   $scope.getEvents = function(){
-    console.log("Grabbing events!")
+    dataFactory.getAll().then(function(results){
+      console.log(results);
+    });
   }
 });

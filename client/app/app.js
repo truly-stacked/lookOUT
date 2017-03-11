@@ -34,7 +34,7 @@ angular.module('lookoutApp',[
       })
       .catch(
         function(err){
-          throw new Error(err)
+          console.log("ERROR!")
         });
     }
 
