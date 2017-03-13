@@ -1,4 +1,6 @@
 body {
+  background-color: #FFFFF6;
+  color: #342638;
   height: 100%;
 }
 .align {
@@ -6,6 +8,8 @@ body {
   align-items: center;
   justify-content: center;
 }
+
+/*NAVBAR======================================================================*/
 .navbar-form .input-group {
   display: table;
 }
@@ -37,4 +41,28 @@ body {
 /* Padding for spacing */
 .inner {
   padding: 30px;
+}
+/*EVENT PAGE==================================================================*/
+.event-container {
+  margin-top: 50px;
+}
+
+.title {
+  border-bottom-style: dotted;
+}
+.event-category {
+  margin-left: 3%;
+  font-size: 30%;
+  font-style: italic;
+}
+.flyer {
+  margin-top: 50px;
+  max-width: 100%
+}
+
+.heading {
+  font-size: 5em;
+}
+.lead {
+  padding-right: 25%;
 }

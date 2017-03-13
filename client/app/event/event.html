@@ -1,1 +1,14 @@
-<text>Event Page</text>
+<div class="event-container">
+  <div class="container col-md-7">
+    <div class="title">
+      <h1 class="heading">{{ mockEvent.name }}<span class="event-category">{{ mockEvent.category}}</span></h1>
+      <p class="lead"> {{ mockEvent.description }}</p>
+    </div>
+    <div class ="info">
+      {{ mockEvent.venue}}
+    </div>
+  </div>
+  <div class=" container col-md-5">
+    <img class="flyer img-rounded pull-right" src= {{mockEvent.originalImage}}>
+  </div>
+</div>
