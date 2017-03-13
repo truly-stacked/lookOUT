@@ -14,9 +14,37 @@ app.use(express.static('./client'));
 
 //++++ routes
 
+//Return an object that contains all events. 
 app.get('/results', function (req, res){
-  request('https://www.eventbriteapi.com/v3/events/search/?token='+keys.oAuthKey+'&location.latitude=40.7831&location.longitude=73.9712&expand=venue', function(err, body){
- 	err ? console.log(err) : res.json(body)
+  
+  let eventsObj = [];
+  let eventObj = {};
+
+  request('https://www.eventbriteapi.com/v3/events/search/?token='+keys.oAuthKey+'&location.latitude=40.7831&location.longitude=-73.9712&expand=venue,category', function(err, body){
+ 	if(err) {
+ 		console.log('YOU FAILED', err);
+ 	} else {
+ 	  let eventbriteObj = JSON.parse(body.body).events;
+ 	    		
+ 	   eventbriteObj.forEach(function (event){
+ 
+ 	   	// eventObj.id = event.id;
+ 	   	// eventObj.name = event.name.text;
+ 	   	// eventObj.time = event.start.utc;
+ 	   	// eventObj.catName = event.category.name;
+ 	    // eventObj.cardImage = event.logo.url;
+ 	   	eventObj.ogImage = typeof (event.logo.original.url);
+ 	   	// eventObj.venue = event.venue.name;
+ 	   	// eventObj.venueAddress = event.venue.address.localized_address_display;
+ 	   	// eventObj.description = event.description.text;
+
+ 	   	eventsObj.push(eventObj);
+ 	   });
+
+ 	   console.log(eventsObj.length);
+
+ 	}
+
   });
 });
 
