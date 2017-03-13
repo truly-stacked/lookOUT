@@ -26,6 +26,29 @@ app.get('/results', function (req, res){
  	} else {
  	  let eventbriteObj = JSON.parse(body.body).events;
  	    		
+
+var nullChecker = function (event, arrayKeys){
+  var solution = "";
+  var position = 0;
+  
+  var checkAllValue = function (obj, key) {
+    position +=1;
+    if (obj[key] === null){
+      return "fail";
+    } else if (obj[key] === undefined){
+    return obj;
+    }
+    return checkAllValue(obj[key], arrayKeys[position]);
+  };
+  solution = checkAllValue(event, arrayKeys[0]);
+  return solution;
+};
+
+
+
+
+
+
  	   eventbriteObj.forEach(function (event){
  
  	   	// eventObj.id = event.id;
@@ -33,15 +56,16 @@ app.get('/results', function (req, res){
  	   	// eventObj.time = event.start.utc;
  	   	// eventObj.catName = event.category.name;
  	    // eventObj.cardImage = event.logo.url;
- 	   	eventObj.ogImage = typeof (event.logo.original.url);
+ 	   	eventObj.ogImage = nullChecker(event,['logo','original','url']);
  	   	// eventObj.venue = event.venue.name;
  	   	// eventObj.venueAddress = event.venue.address.localized_address_display;
  	   	// eventObj.description = event.description.text;
+ 	   	console.log('--->', eventObj.ogImage);
 
  	   	eventsObj.push(eventObj);
  	   });
 
- 	   console.log(eventsObj.length);
+ 	  // console.log(eventsObj);
 
  	}
 
