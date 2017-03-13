@@ -72,10 +72,19 @@ angular.module('lookoutApp',[
           function(err){
             throw new Error(err)
           });
-        }
+      }
+
       return {
         getAll : getAll,
         getFiltered : getFiltered,
         getEvent : getEvent
     }
-  });
+  })
+  .factory('eventFactory', function($http) {
+    var current = {}
+    current.insertEvent = function(value) {
+      current.event = value
+    }
+
+    return current;
+  })
