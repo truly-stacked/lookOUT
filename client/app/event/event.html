@@ -4,9 +4,20 @@
       <h1 class="heading">{{ mockEvent.name }}<span class="event-category">{{ mockEvent.category}}</span></h1>
       <p class="lead"> {{ mockEvent.description }}</p>
     </div>
-    <div class ="info">
-      {{ mockEvent.venue}}
-    </div>
+      <div class ="map">
+        <iframe
+          width="300"
+          height="225"
+          frameborder="0" style="border:0"
+          src="https://www.google.com/maps/embed/v1/place?key=AIzaSyDanwxT0CdlMhsj0D2Yn-t6gNZ6K3_Pjfs
+            &q=Hack+Reactor,New+York+NY" allowfullscreen>
+        </iframe>
+      </div>
+      <div class="info">
+        <div class"event-time">{{mockEvent.time | date : "h:mm a"}}</div>
+        <div class="venue-name">{{ mockEvent.venue }}</div>
+        <div class="venue-address">{{ mockEvent.address }}</div>
+      </div>
   </div>
   <div class=" container col-md-5">
     <img class="flyer img-rounded pull-right" src= {{mockEvent.originalImage}}>
