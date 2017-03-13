@@ -47,9 +47,6 @@ body {
   margin-top: 50px;
 }
 
-.title {
-  border-bottom-style: dotted;
-}
 .event-category {
   margin-left: 3%;
   font-size: 30%;
@@ -63,6 +60,18 @@ body {
 .heading {
   font-size: 5em;
 }
+
+.info {
+  display: inline-block;
+}
 .lead {
   padding-right: 25%;
+}
+
+.map {
+  display: inline-block;
+  margin-top: 3%
+}
+.title {
+  border-bottom-style: dotted;
 }
