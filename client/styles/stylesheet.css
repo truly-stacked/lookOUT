@@ -108,3 +108,18 @@ body {
 }
 
 /*CARD WORK===================================================================*/
+
+.card-description {
+  display: block;
+}
+.card-time {
+  font-size: 30px;
+}
+.cont {
+  border: 1px solid #ddd
+}
+.thumbnail {
+  border: none;
+  padding-left: 1px;
+  padding-right: 1px;
+}
