@@ -12,81 +12,137 @@ app.use(morgan('dev'));
 app.use(bodyParser.json());
 app.use(express.static('./client'));
 
-//++++ routes
+//++++ Routes
+//search parameters
+let searchLong = -73.9712;
+let searchLat = 40.7831;
+let searchDate = 'today';
+let searchPrice = 'free';
 
-//Return an object that contains all events. 
-app.get('/results', function (req, res){
-  
-  let eventsObj = [];
-  let eventObj = {};
 
-  request('https://www.eventbriteapi.com/v3/events/search/?token='+keys.oAuthKey+'&location.latitude=40.7831&location.longitude=-73.9712&expand=venue,category', function(err, body){
- 	if(err) {
- 		console.log('YOU FAILED', err);
- 	} else {
- 	  let eventbriteObj = JSON.parse(body.body).events;
- 	    		
 
-var nullChecker = function (event, arrayKeys){
-  var solution = "";
-  var position = 0;
-  
-  var checkAllValue = function (obj, key) {
+// HELPER FUNCTION
+let nullChecker = (event, arrayKeys) => {
+  let solution = "";
+  let position = 0;
+
+  let checkAllValue = (obj, key) => {
     position +=1;
     if (obj[key] === null){
-      return "fail";
+      return "TBD";
     } else if (obj[key] === undefined){
-    return obj;
+      return obj;
     }
-    return checkAllValue(obj[key], arrayKeys[position]);
+      return checkAllValue(obj[key], arrayKeys[position]);
   };
-  solution = checkAllValue(event, arrayKeys[0]);
+  solution = checkAllValue(event, arrayKeys[position]);
   return solution;
 };
 
+//Return an object that contains all events. 
+app.get('/results', (req, res) => {
+
+  let eventsObj = [];
+  let eventObj = {};
+
+  request('https://www.eventbriteapi.com/v3/events/search/?token='+keys.oAuthKey
+  	+'&location.latitude='+searchLat
+  	+'&location.longitude='+searchLong
+  	+'&start_date.keyword='+searchDate
+  	+'&price='+searchPrice
+  	+'&expand=venue,category', 
+  	
+  	(err, body) => {
+      if(err) {
+        console.log('YOU FAILED', err);
+   	  }else{
+   	    let eventbriteObj = JSON.parse(body.body).events;
+   	      	   
+        // Object Constructor
+        eventbriteObj.forEach( (event) => {
+          eventObj.id = nullChecker(event,['id']);
+   	      eventObj.name = nullChecker(event,['name','text']);
+   	      eventObj.time = nullChecker(event,['start','utc']);
+   	      eventObj.catName = nullChecker(event,['category','name']);
+   	      eventObj.cardImage = nullChecker(event,['logo','url']);
+   	      eventObj.ogImage = nullChecker(event,['logo','original','url']);
+   	      eventObj.venue = nullChecker(event,['venue','name']);
+   	      eventObj.venueAddress = nullChecker(event,['venue','address','localized_address_display']);
+   	      eventObj.description = nullChecker(event,['description','text']);
+   	      eventsObj.push(eventObj);
+        });
+          //console.log(eventsObj);
+          res.json(eventsObj);
+      }
+    });
+});
 
 
+app.get('/filtered', (req, res) => {
+  let searchCat = 115 || req.query.cat; // temp placehold for Family & Education
+  let eventsObj = [];
+  let eventObj = {};
 
+  request('https://www.eventbriteapi.com/v3/events/search/?token='+keys.oAuthKey
+  	+'&location.latitude='+searchLat
+  	+'&location.longitude='+searchLong
+  	+'&start_date.keyword='+searchDate
+  	+'&price='+searchPrice
+  	+'&categories='+searchCat
+  	+'&expand=venue,category', 
+  	
+  	(err, body) => {
+      if(err) {
+        console.log('YOU FAILED', err);
+   	  }else{
+   	    let eventbriteObj = JSON.parse(body.body).events;
+   	      	   
+        // Object Constructor
+        eventbriteObj.forEach( (event) => {
+          eventObj.id = nullChecker(event,['id']);
+   	      eventObj.name = nullChecker(event,['name','text']);
+   	      eventObj.time = nullChecker(event,['start','utc']);
+   	      eventObj.catName = nullChecker(event,['category','name']);
+   	      eventObj.cardImage = nullChecker(event,['logo','url']);
+   	      eventObj.ogImage = nullChecker(event,['logo','original','url']);
+   	      eventObj.venue = nullChecker(event,['venue','name']);
+   	      eventObj.venueAddress = nullChecker(event,['venue','address','localized_address_display']);
+   	      eventObj.description = nullChecker(event,['description','text']);
+   	      eventsObj.push(eventObj);
+        });
+          //console.log(eventsObj);
+          res.json(eventsObj);
+      }
+    });
+});
 
+app.get('/event', (req, res) => {
+  let searchID = 32807965508 || req.query.id; // temp placeholder
+  let eventObj = {};
 
- 	   eventbriteObj.forEach(function (event){
+  request('https://www.eventbriteapi.com/v3/events/'+searchID
+  	+'/?token='+keys.oAuthKey
+  	+'&expand=venue,category',
+  	(err,body)=>{
+  	  if (err) {
+  	  	console.log('You Fail', err);
+  	  } else {
+        let event = JSON.parse(body.body);
  
- 	   	// eventObj.id = event.id;
- 	   	// eventObj.name = event.name.text;
- 	   	// eventObj.time = event.start.utc;
- 	   	// eventObj.catName = event.category.name;
- 	    // eventObj.cardImage = event.logo.url;
- 	   	eventObj.ogImage = nullChecker(event,['logo','original','url']);
- 	   	// eventObj.venue = event.venue.name;
- 	   	// eventObj.venueAddress = event.venue.address.localized_address_display;
- 	   	// eventObj.description = event.description.text;
- 	   	console.log('--->', eventObj.ogImage);
-
- 	   	eventsObj.push(eventObj);
- 	   });
-
- 	  // console.log(eventsObj);
-
- 	}
-
-  });
+        eventObj.id = nullChecker(event,['id']);
+   	    eventObj.name = nullChecker(event,['name','text']);
+   	    eventObj.time = nullChecker(event,['start','utc']);
+   	    eventObj.catName = nullChecker(event,['category','name']);
+   	    eventObj.cardImage = nullChecker(event,['logo','url']);
+   	    eventObj.ogImage = nullChecker(event,['logo','original','url']);
+   	    eventObj.venue = nullChecker(event,['venue','name']);
+   	    eventObj.venueAddress = nullChecker(event,['venue','address','localized_address_display']);
+   	    eventObj.description = nullChecker(event,['description','text']);
+ 		
+ 		res.json(eventObj);
+  	  }
+  	});
 });
-
-
-
-
-
-app.get('/filtered', function (req, res){
-
-
-});
-
-app.get('/event', function (req, res){
-
-});
-//console.log(window.oAuthKey);
-
-
 
 
 app.listen(process.env.port||8888);
