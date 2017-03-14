@@ -9,6 +9,24 @@ const NodeGeocoder = require('node-geocoder');
 
 const app = express();
 
+let dataCleaner = (arr) =>{
+  let cleanedData=[];
+  for(key in arr){
+    if(arr[key]['id']!== 'TBD' &&
+       arr[key]['name']!== 'TBD' &&
+       arr[key]['time']!== 'TBD' &&
+       arr[key]['catName']!== 'TBD'&&
+       arr[key]['cardImage']!== 'TBD' &&
+       arr[key]['ogImage']!== 'TBD' &&
+       arr[key]['venue']!== 'TBD' &&
+       arr[key]['venueAddress']!== 'TBD' &&
+       arr[key]['description']!== 'TBD'){
+           cleanedData.push(arr[key])
+    }
+  }
+};
+
+
 
 //++++ init
 app.use(morgan('dev'));
@@ -16,7 +34,7 @@ app.use(bodyParser.json());
 app.use(express.static('./client'));
 
 
-// HELPER -- 
+// HELPER --
 // Check for null
 let nullChecker = (event, arrayKeys) => {
   let solution = "";
@@ -44,7 +62,8 @@ let options = {
 let geocoder = NodeGeocoder (options);
 
 
-// ROUTES --
+//Return an object that contains all events.
+
 app.get('/results', (req, res) => {
 
   let locationSearch = (req.query.location);
@@ -55,6 +74,7 @@ app.get('/results', (req, res) => {
   let locationWithin = '1mi';
   let eventsObj = [];
   let eventObj = {};
+  let cleanedData = [];
 
 
 geocoder.geocode(locationSearch)
@@ -62,23 +82,22 @@ geocoder.geocode(locationSearch)
   	searchLat = res[0].latitude;
     searchLong = res[0].longitude;
   }).then(function(){
-    
+
   request('https://www.eventbriteapi.com/v3/events/search/?token='+keys.oAuthKey
   	+'&location.latitude='+searchLat
   	+'&location.longitude='+searchLong
   	+'&start_date.keyword='+searchDate
   	+'&price='+searchPrice
   	+'location.within='+locationWithin
-  	+'&expand=venue,category', 
-  	
+  	+'&expand=venue,category',
+
   	function (err, body) {
       if(err) {
         console.log('YOU FAILED', err);
    	  }else{
    	    let eventbriteObj = JSON.parse(body.body).events;
    	    let cloneObj = {};
-   	   
-   	      	    
+
         // Object Constructor
         eventbriteObj.forEach( (event) => {
           eventObj.id = nullChecker(event,['id']);
@@ -93,12 +112,11 @@ geocoder.geocode(locationSearch)
    	      eventObj.lat = nullChecker(event,['venue','latitude']);
    	      eventObj.long = nullChecker(event,['venue','longitude']);
    	      eventObj.distance = compare(searchLat, searchLong, eventObj.lat, eventObj.long).toFixed(2) + ' km';
-   	      
+
    	      cloneObj = JSON.parse(JSON.stringify(eventObj));
    	      eventsObj.push(cloneObj);
-   	     
+
         });
-          console.log(eventsObj.length);
           res.json(eventsObj);
       }
     });
@@ -121,14 +139,14 @@ app.get('/filtered', (req, res) => {
   	+'&start_date.keyword='+searchDate
   	+'&price='+searchPrice
   	+'&categories='+searchCat
-  	+'&expand=venue,category', 
-  	
+  	+'&expand=venue,category',
+
   	function (err, body) {
       if(err) {
         console.log('YOU FAILED', err);
    	  }else{
    	    let eventbriteObj = JSON.parse(body.body).events;
-   	      	   
+
         // Object Constructor
         eventbriteObj.forEach( (event) => {
           eventObj.id = nullChecker(event,['id']);
@@ -168,13 +186,13 @@ geocoder.geocode('29 champs elysée paris', function(err, res) {
   request('https://www.eventbriteapi.com/v3/events/'+searchID
   	+'/?token='+keys.oAuthKey
   	+'&expand=venue,category',
-  	
+
   	function (err,body) {
   	  if (err) {
   	  	console.log('You Fail', err);
   	  } else {
         let event = JSON.parse(body.body);
- 
+
         eventObj.id = nullChecker(event,['id']);
    	    eventObj.name = nullChecker(event,['name','text']);
    	    eventObj.time = nullChecker(event,['start','utc']);
@@ -187,7 +205,7 @@ geocoder.geocode('29 champs elysée paris', function(err, res) {
    	    eventObj.lat = nullChecker(event,['venue','latitude']);
    	    eventObj.long = nullChecker(event,['venue','longitude']);
    	    eventObj.distance = compare(searchLat, searchLong, eventObj.lat, eventObj.long).toFixed(2) + ' km';
- 		
+
  		res.json(eventObj);
   	  }
   	});
