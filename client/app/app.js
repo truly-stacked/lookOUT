@@ -24,8 +24,13 @@ angular.module('lookoutApp',[
       })
   })
   .factory('dataFactory', function($http) {
-    const getAll = function() {
-      return $http.get('/results')
+    const getAll = function(location) {
+      console.log(location)
+      return $http({
+        method: 'GET',
+        url: '/results',
+        params: {location: location}
+      })
       .then(
       function(results){
         //Successful get request function and message
@@ -38,11 +43,11 @@ angular.module('lookoutApp',[
         });
     }
 
-    const getFiltered = function(catagory) {
+    const getFiltered = function(category) {
       return $http({
         method: 'GET',
         url: '/filtered',
-        params: {catagory:catagory}
+        params: {category:category}
       })
       .then(
         function(results){
@@ -83,8 +88,16 @@ angular.module('lookoutApp',[
   .factory('eventFactory', function($http) {
     var current = {}
     current.insertEvent = function(value) {
-      current.event = value
+      current.event = value;
     }
 
     return current;
+  })
+  .factory('resultsFactory', function($http) {
+    var current = {}
+    current.insertResults = function(results) {
+      current.results = results;
+    }
+
+    return current
   })
