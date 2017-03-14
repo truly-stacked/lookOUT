@@ -31,6 +31,25 @@ let nullChecker = (event, arrayKeys) => {
   return solution;
 };
 
+// let dataCleaner = (arr) =>{
+//   let cleanedData=[];
+//   for(key in arr){
+//     if(arr[key]['id']!== 'TBD' &&
+//        arr[key]['name']!== 'TBD' &&
+//        arr[key]['time']!== 'TBD' &&
+//        arr[key]['catName']!== 'TBD'&&
+//        arr[key]['cardImage']!== 'TBD' &&
+//        arr[key]['ogImage']!== 'TBD' &&
+//        arr[key]['venue']!== 'TBD' &&
+//        arr[key]['venueAddress']!== 'TBD' &&
+//        arr[key]['description']!== 'TBD'){
+//            cleanedData.push(arr[key])
+//     }
+//   }
+// };
+
+
+
 //Return an object that contains all events.
 app.get('/results', (req, res) => {
 
@@ -40,6 +59,7 @@ app.get('/results', (req, res) => {
   let searchPrice = 'free';
   let eventsObj = [];
   let eventObj = {};
+  let cleanedData = [];
 
   request('https://www.eventbriteapi.com/v3/events/search/?token='+keys.oAuthKey
   	+'&location.latitude='+searchLat
@@ -67,6 +87,9 @@ app.get('/results', (req, res) => {
    	      eventObj.description = nullChecker(event,['description','text']);
    	      eventsObj.push(eventObj);
         });
+
+          // let finalData = dataCleaner(eventsObj)
+
           //console.log(eventsObj);
           res.json(eventsObj);
       }
