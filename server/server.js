@@ -126,7 +126,7 @@ geocoder.geocode(locationSearch)
 
 app.get('/filtered', (req, res) => {
 
-
+	
   let searchCat = 115 || req.query.cat; // temp placehold for Family & Education
   let searchLong = -73.9712 || req.query.long;
   let searchLat = 40.7831 || req.query.lat;
