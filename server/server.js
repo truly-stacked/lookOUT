@@ -9,6 +9,24 @@ const NodeGeocoder = require('node-geocoder');
 
 const app = express();
 
+let dataCleaner = (arr) =>{
+  let cleanedData=[];
+  for(key in arr){
+    if(arr[key]['id']!== 'TBD' &&
+       arr[key]['name']!== 'TBD' &&
+       arr[key]['time']!== 'TBD' &&
+       arr[key]['catName']!== 'TBD'&&
+       arr[key]['cardImage']!== 'TBD' &&
+       arr[key]['ogImage']!== 'TBD' &&
+       arr[key]['venue']!== 'TBD' &&
+       arr[key]['venueAddress']!== 'TBD' &&
+       arr[key]['description']!== 'TBD'){
+           cleanedData.push(arr[key])
+    }
+  }
+};
+
+
 
 //++++ init
 app.use(morgan('dev'));
@@ -44,23 +62,6 @@ let options = {
 let geocoder = NodeGeocoder (options);
 
 
-ROUTES --
-let dataCleaner = (arr) =>{
-  let cleanedData=[];
-  for(key in arr){
-    if(arr[key]['id']!== 'TBD' &&
-       arr[key]['name']!== 'TBD' &&
-       arr[key]['time']!== 'TBD' &&
-       arr[key]['catName']!== 'TBD'&&
-       arr[key]['cardImage']!== 'TBD' &&
-       arr[key]['ogImage']!== 'TBD' &&
-       arr[key]['venue']!== 'TBD' &&
-       arr[key]['venueAddress']!== 'TBD' &&
-       arr[key]['description']!== 'TBD'){
-           cleanedData.push(arr[key])
-    }
-  }
-};
 
 
 
@@ -84,14 +85,14 @@ geocoder.geocode(locationSearch)
   	searchLat = res[0].latitude;
     searchLong = res[0].longitude;
   }).then(function(){
-    
+
   request('https://www.eventbriteapi.com/v3/events/search/?token='+keys.oAuthKey
   	+'&location.latitude='+searchLat
   	+'&location.longitude='+searchLong
   	+'&start_date.keyword='+searchDate
   	+'&price='+searchPrice
   	+'location.within='+locationWithin
-  	+'&expand=venue,category', 
+  	+'&expand=venue,category',
 
   	function (err, body) {
       if(err) {
