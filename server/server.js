@@ -52,6 +52,7 @@ app.get('/results', (req, res) => {
   let searchLat = 40.7831;
   let searchDate = 'today' || req.query.date;
   let searchPrice = 'free';
+  let locationWithin = '5mi';
   let eventsObj = [];
   let eventObj = {};
 
@@ -72,6 +73,7 @@ geocoder.geocode(locationSearch)
   	+'&location.longitude='+searchLong
   	+'&start_date.keyword='+searchDate
   	+'&price='+searchPrice
+  	+'location.within='+locationWithin
   	+'&expand=venue,category', 
   	
   	function (err, body) {
@@ -101,7 +103,7 @@ geocoder.geocode(locationSearch)
    	      eventsObj.push(cloneObj);
    	     
         });
-          //console.log(eventsObj);
+          console.log(eventsObj);
           res.json(eventsObj);
       }
     });
@@ -109,6 +111,8 @@ geocoder.geocode(locationSearch)
 
 
 app.get('/filtered', (req, res) => {
+
+	
   let searchCat = 115 || req.query.cat; // temp placehold for Family & Education
   let searchLong = -73.9712 || req.query.long;
   let searchLat = 40.7831 || req.query.lat;
