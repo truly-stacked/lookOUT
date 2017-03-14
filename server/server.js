@@ -34,10 +34,6 @@ let nullChecker = (event, arrayKeys) => {
   return solution;
 };
 
-// Parse distance given two long and lats
-
-
-
 // ROUTES --
 app.get('/results', (req, res) => {
 
@@ -91,6 +87,8 @@ app.get('/results', (req, res) => {
 
 app.get('/filtered', (req, res) => {
   let searchCat = 115 || req.query.cat; // temp placehold for Family & Education
+  let searchLong = -73.9712 || req.query.long;
+  let searchLat = 40.7831 || req.query.lat;
   let eventsObj = [];
   let eventObj = {};
 
@@ -119,7 +117,12 @@ app.get('/filtered', (req, res) => {
    	      eventObj.venue = nullChecker(event,['venue','name']);
    	      eventObj.venueAddress = nullChecker(event,['venue','address','localized_address_display']);
    	      eventObj.description = nullChecker(event,['description','text']);
-   	      eventsObj.push(eventObj);
+   	      eventObj.lat = nullChecker(event,['venue','latitude']);
+   	      eventObj.long = nullChecker(event,['venue','longitude']);
+   	      eventObj.distance = compare(searchLat, searchLong, eventObj.lat, eventObj.long).toFixed(2) + ' km';
+
+   	      cloneObj = JSON.parse(JSON.stringify(eventObj));
+   	      eventsObj.push(cloneObj);
         });
           //console.log(eventsObj);
           res.json(eventsObj);
@@ -128,6 +131,8 @@ app.get('/filtered', (req, res) => {
 });
 
 app.get('/event', (req, res) => {
+  let searchLong = -73.9712 || req.query.long;
+  let searchLat = 40.7831 || req.query.lat;
   let searchID = 32807965508 || req.query.id; // temp placeholder
   let eventObj = {};
 
@@ -150,6 +155,9 @@ app.get('/event', (req, res) => {
    	    eventObj.venue = nullChecker(event,['venue','name']);
    	    eventObj.venueAddress = nullChecker(event,['venue','address','localized_address_display']);
    	    eventObj.description = nullChecker(event,['description','text']);
+   	    eventObj.lat = nullChecker(event,['venue','latitude']);
+   	    eventObj.long = nullChecker(event,['venue','longitude']);
+   	    eventObj.distance = compare(searchLat, searchLong, eventObj.lat, eventObj.long).toFixed(2) + ' km';
  		
  		res.json(eventObj);
   	  }
