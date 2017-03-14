@@ -1,16 +1,18 @@
-<text>Results</text>
-
-<div ng-repeat="result in results">
-  <div class="col-xs-18 col-sm-6 col-md-4">
-    <div class="thumbnail">
-      <img src= {{result.cardImage}}>
-      <div class="caption">
-        <h4 class='cardName'>{{result.name}}</h4>
-        <a href="#" class="btn btn-default btn-xs pull-right" role="button">
-          {{result.time | date : "h:mm a"}}
-        </a>
-        <a href="#" class="btn btn-info btn-xs" role="button">{{result.catName}}</a>
-        <a href="#" class="btn btn-default btn-xs" role="button">{{result.distance}}</a>
+<div class="results-container">
+  <div class="container">
+    <div ng-click="openEvent(result)" ng-repeat="result in results">
+      <div class="col-xs-18 col-sm-6 col-md-4">
+        <div class="thumbnail">
+          <img src= {{result.cardImage}}>
+          <div class="caption">
+            <h4 class='cardName'>{{result.name}}</h4>
+            <a href="#" class="btn btn-default btn-xs pull-right" role="button">
+              {{result.time | date : "h:mm a"}}
+            </a>
+            <span href="#" class="catName btn btn-xs" role="button">{{result.catName}}</span>
+            <span href="#" class="btn btn-default btn-xs" role="button">{{result.distance}}</span>
+          </div>
+        </div>
       </div>
     </div>
   </div>
