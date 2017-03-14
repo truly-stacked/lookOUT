@@ -112,6 +112,11 @@ body {
 .thumbnail {
     padding:0;
 }
+.cardName {
+  height:50px;
+  text-overflow: ellipsis;
+}
+
 
 /*Splash Page===================================================================*/
 
