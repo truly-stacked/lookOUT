@@ -1,5 +1,5 @@
 body {
-  background-color: #FFFFF6;
+  background-color: #FFFFFF;
   color: #342638;
   font-family: 'Libre Franklin', sans-serif;
   height: 100%;
@@ -70,7 +70,7 @@ body {
 }
 
 .flyer {
-  margin-top: 50px;
+  margin-top: 5%;
   max-width: 100%;
   box-shadow: 5px 5px 3px #888888;
 }
