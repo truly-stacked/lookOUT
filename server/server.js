@@ -48,8 +48,8 @@ let geocoder = NodeGeocoder (options);
 app.get('/results', (req, res) => {
 
   let locationSearch = (req.query.location);
-  let searchLong = -73.9712 || req.query.long;
-  let searchLat = 40.7831 || req.query.lat;
+  let searchLong = -73.9712;
+  let searchLat = 40.7831;
   let searchDate = 'today' || req.query.date;
   let searchPrice = 'free';
   let eventsObj = [];
