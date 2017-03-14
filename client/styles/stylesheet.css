@@ -1,5 +1,5 @@
 body {
-  background-color: #FFFFF6;
+  background-color: #FFFFFF;
   color: #342638;
   font-family: 'Libre Franklin', sans-serif;
   height: 100%;
@@ -70,7 +70,7 @@ body {
 }
 
 .flyer {
-  margin-top: 50px;
+  margin-top: 5%;
   max-width: 100%;
   box-shadow: 5px 5px 3px #888888;
 }
@@ -109,17 +109,23 @@ body {
 
 /*CARD WORK===================================================================*/
 
-.card-description {
-  display: block;
-}
-.card-time {
-  font-size: 30px;
-}
-.cont {
-  border: 1px solid #ddd
-}
 .thumbnail {
-  border: none;
-  padding-left: 1px;
-  padding-right: 1px;
+    padding:0;
+}
+
+/*Splash Page===================================================================*/
+
+.splashPageImg {
+    width: 100%;
+    height: 300px;
+    background-position: center;
+    background-image: url('../assets/frontpage-image.jpg');
+    background-size: cover;
+}
+.navbar {
+  margin-bottom: 0px;
+}
+
+.splashSearch {
+  height:10px;
 }

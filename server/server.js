@@ -3,6 +3,9 @@ const morgan = require ('morgan');
 const bodyParser = require('body-parser');
 const keys = require('../config/keys.js');
 const request = require ('request');
+const compare = require('compare-lat-lon');
+const NodeGeocoder = require('node-geocoder');
+
 
 const app = express();
 
@@ -12,8 +15,9 @@ app.use(morgan('dev'));
 app.use(bodyParser.json());
 app.use(express.static('./client'));
 
-//++++ Routes
-// HELPER FUNCTION
+
+// HELPER --
+// Check for null
 let nullChecker = (event, arrayKeys) => {
   let solution = "";
   let position = 0;
@@ -31,48 +35,70 @@ let nullChecker = (event, arrayKeys) => {
   return solution;
 };
 
-// let dataCleaner = (arr) =>{
-//   let cleanedData=[];
-//   for(key in arr){
-//     if(arr[key]['id']!== 'TBD' &&
-//        arr[key]['name']!== 'TBD' &&
-//        arr[key]['time']!== 'TBD' &&
-//        arr[key]['catName']!== 'TBD'&&
-//        arr[key]['cardImage']!== 'TBD' &&
-//        arr[key]['ogImage']!== 'TBD' &&
-//        arr[key]['venue']!== 'TBD' &&
-//        arr[key]['venueAddress']!== 'TBD' &&
-//        arr[key]['description']!== 'TBD'){
-//            cleanedData.push(arr[key])
-//     }
-//   }
-// };
+let options = {
+	provider: 'google',
+	httpAdapter: 'https',
+	formatter: null
+};
+
+let geocoder = NodeGeocoder (options);
+
+
+ROUTES --
+let dataCleaner = (arr) =>{
+  let cleanedData=[];
+  for(key in arr){
+    if(arr[key]['id']!== 'TBD' &&
+       arr[key]['name']!== 'TBD' &&
+       arr[key]['time']!== 'TBD' &&
+       arr[key]['catName']!== 'TBD'&&
+       arr[key]['cardImage']!== 'TBD' &&
+       arr[key]['ogImage']!== 'TBD' &&
+       arr[key]['venue']!== 'TBD' &&
+       arr[key]['venueAddress']!== 'TBD' &&
+       arr[key]['description']!== 'TBD'){
+           cleanedData.push(arr[key])
+    }
+  }
+};
 
 
 
 //Return an object that contains all events.
+
 app.get('/results', (req, res) => {
 
-  let searchLong = -73.9712 || req.query.long;
-  let searchLat = 40.7831 || req.query.lat;
+  let locationSearch = (req.query.location);
+  let searchLong = -73.9712;
+  let searchLat = 40.7831;
   let searchDate = 'today' || req.query.date;
   let searchPrice = 'free';
+  let locationWithin = '1mi';
   let eventsObj = [];
   let eventObj = {};
   let cleanedData = [];
 
+
+geocoder.geocode(locationSearch)
+  .then(function(res) {
+  	searchLat = res[0].latitude;
+    searchLong = res[0].longitude;
+  }).then(function(){
+    
   request('https://www.eventbriteapi.com/v3/events/search/?token='+keys.oAuthKey
   	+'&location.latitude='+searchLat
   	+'&location.longitude='+searchLong
   	+'&start_date.keyword='+searchDate
   	+'&price='+searchPrice
-  	+'&expand=venue,category',
+  	+'location.within='+locationWithin
+  	+'&expand=venue,category', 
 
-  	(err, body) => {
+  	function (err, body) {
       if(err) {
         console.log('YOU FAILED', err);
    	  }else{
    	    let eventbriteObj = JSON.parse(body.body).events;
+   	    let cloneObj = {};
 
         // Object Constructor
         eventbriteObj.forEach( (event) => {
@@ -85,20 +111,27 @@ app.get('/results', (req, res) => {
    	      eventObj.venue = nullChecker(event,['venue','name']);
    	      eventObj.venueAddress = nullChecker(event,['venue','address','localized_address_display']);
    	      eventObj.description = nullChecker(event,['description','text']);
-   	      eventsObj.push(eventObj);
+   	      eventObj.lat = nullChecker(event,['venue','latitude']);
+   	      eventObj.long = nullChecker(event,['venue','longitude']);
+   	      eventObj.distance = compare(searchLat, searchLong, eventObj.lat, eventObj.long).toFixed(2) + ' km';
+
+   	      cloneObj = JSON.parse(JSON.stringify(eventObj));
+   	      eventsObj.push(cloneObj);
+
         });
-
-          // let finalData = dataCleaner(eventsObj)
-
-          //console.log(eventsObj);
           res.json(eventsObj);
       }
     });
+  });
 });
 
 
 app.get('/filtered', (req, res) => {
+
+
   let searchCat = 115 || req.query.cat; // temp placehold for Family & Education
+  let searchLong = -73.9712 || req.query.long;
+  let searchLat = 40.7831 || req.query.lat;
   let eventsObj = [];
   let eventObj = {};
 
@@ -110,7 +143,7 @@ app.get('/filtered', (req, res) => {
   	+'&categories='+searchCat
   	+'&expand=venue,category',
 
-  	(err, body) => {
+  	function (err, body) {
       if(err) {
         console.log('YOU FAILED', err);
    	  }else{
@@ -127,7 +160,12 @@ app.get('/filtered', (req, res) => {
    	      eventObj.venue = nullChecker(event,['venue','name']);
    	      eventObj.venueAddress = nullChecker(event,['venue','address','localized_address_display']);
    	      eventObj.description = nullChecker(event,['description','text']);
-   	      eventsObj.push(eventObj);
+   	      eventObj.lat = nullChecker(event,['venue','latitude']);
+   	      eventObj.long = nullChecker(event,['venue','longitude']);
+   	      eventObj.distance = compare(searchLat, searchLong, eventObj.lat, eventObj.long).toFixed(2) + ' km';
+
+   	      cloneObj = JSON.parse(JSON.stringify(eventObj));
+   	      eventsObj.push(cloneObj);
         });
           //console.log(eventsObj);
           res.json(eventsObj);
@@ -136,13 +174,22 @@ app.get('/filtered', (req, res) => {
 });
 
 app.get('/event', (req, res) => {
+
+geocoder.geocode('29 champs elysée paris', function(err, res) {
+  console.log(res);
+});
+
+
+  let searchLong = -73.9712 || req.query.long;
+  let searchLat = 40.7831 || req.query.lat;
   let searchID = 32807965508 || req.query.id; // temp placeholder
   let eventObj = {};
 
   request('https://www.eventbriteapi.com/v3/events/'+searchID
   	+'/?token='+keys.oAuthKey
   	+'&expand=venue,category',
-  	(err,body)=>{
+
+  	function (err,body) {
   	  if (err) {
   	  	console.log('You Fail', err);
   	  } else {
@@ -157,6 +204,9 @@ app.get('/event', (req, res) => {
    	    eventObj.venue = nullChecker(event,['venue','name']);
    	    eventObj.venueAddress = nullChecker(event,['venue','address','localized_address_display']);
    	    eventObj.description = nullChecker(event,['description','text']);
+   	    eventObj.lat = nullChecker(event,['venue','latitude']);
+   	    eventObj.long = nullChecker(event,['venue','longitude']);
+   	    eventObj.distance = compare(searchLat, searchLong, eventObj.lat, eventObj.long).toFixed(2) + ' km';
 
  		res.json(eventObj);
   	  }
