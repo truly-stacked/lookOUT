@@ -16,16 +16,24 @@
 
 <div class="container-fluid">
   <div class="row">
-    <div class='splashPageImg'></div>
+    <div class='splashPageImg'>
+      <div class="listContainer">
+        <ul class = 'catNav'>
+          <li><a href="#">Sex</a></li>
+          <li><a href="#">Drugs</a></li>
+          <li><a href="#">Rock'n</a></li>
+          <li><a href="#">Roll</a></li>
+        </ul>
+      </div>
+    </div>
   </div>
 </div>
-<div class="container">
 
+<div class="container">
   <div class="row">
     <div class='splashSearch'></div>
   </div>
 
-
   <div class="row">
 
 
@@ -33,7 +41,7 @@
       <div class="thumbnail">
         <img src= {{mockEvent.cardImage}}>
         <div class="caption">
-          <h4>{{mockEvent.name}}</h4>
+          <h4 class='cardName'>{{mockEvent.name}}</h4>
           <a href="#" class="btn btn-default btn-xs pull-right" role="button">
             {{mockEvent.time | date : "h:mm a"}}
           </a>
@@ -48,7 +56,7 @@
       <div class="thumbnail">
         <img src= {{mockEvent.cardImage}}>
         <div class="caption">
-          <h4>{{mockEvent.name}}</h4>
+          <h4 class='cardName'>{{mockEvent.name}}</h4>
           <a href="#" class="btn btn-default btn-xs pull-right" role="button">
             {{mockEvent.time | date : "h:mm a"}}
           </a>
@@ -63,7 +71,7 @@
       <div class="thumbnail">
         <img src= {{mockEvent.cardImage}}>
         <div class="caption">
-          <h4>{{mockEvent.name}}</h4>
+          <h4 class='cardName'>{{mockEvent.name}}</h4>
           <a href="#" class="btn btn-default btn-xs pull-right" role="button">
             {{mockEvent.time | date : "h:mm a"}}
           </a>

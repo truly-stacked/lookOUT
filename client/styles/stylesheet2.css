@@ -1,0 +1,16 @@
+.catNav {
+  text-align: center;
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  display:inline;
+}
+
+.catNav li {
+  padding-right: 10%;
+  float:left;
+}
+.catNav li a{
+  color: #90589A;
+  font-size: 25px;
+}
