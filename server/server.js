@@ -44,7 +44,7 @@ let options = {
 let geocoder = NodeGeocoder (options);
 
 
-ROUTES --
+//ROUTES
 let dataCleaner = (arr) =>{
   let cleanedData=[];
   for(key in arr){
@@ -84,14 +84,14 @@ geocoder.geocode(locationSearch)
   	searchLat = res[0].latitude;
     searchLong = res[0].longitude;
   }).then(function(){
-    
+
   request('https://www.eventbriteapi.com/v3/events/search/?token='+keys.oAuthKey
   	+'&location.latitude='+searchLat
   	+'&location.longitude='+searchLong
   	+'&start_date.keyword='+searchDate
   	+'&price='+searchPrice
   	+'location.within='+locationWithin
-  	+'&expand=venue,category', 
+  	+'&expand=venue,category',
 
   	function (err, body) {
       if(err) {
