@@ -13,14 +13,6 @@ app.use(bodyParser.json());
 app.use(express.static('./client'));
 
 //++++ Routes
-//search parameters
-let searchLong = -73.9712;
-let searchLat = 40.7831;
-let searchDate = 'today';
-let searchPrice = 'free';
-
-
-
 // HELPER FUNCTION
 let nullChecker = (event, arrayKeys) => {
   let solution = "";
@@ -42,6 +34,10 @@ let nullChecker = (event, arrayKeys) => {
 //Return an object that contains all events. 
 app.get('/results', (req, res) => {
 
+  let searchLong = -73.9712 || req.query.long;
+  let searchLat = 40.7831 || req.query.lat;
+  let searchDate = 'today' || req.query.date;
+  let searchPrice = 'free';
   let eventsObj = [];
   let eventObj = {};
 
