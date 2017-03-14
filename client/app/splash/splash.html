@@ -1,30 +1,49 @@
-<!-- <div class="align">
-  <h1>Splash</h1>
-  <img src = {{mockEvent.originalImage}}>
-</div> -->
-
-
-<div class="container-fluid cards-row">
 <div class="container">
-<div class="row">
-
-  <div class="cont col-sm-6 col-md-4">
-    <div class="thumbnail">
-      <img src= {{mockEvent.cardImage}}>
-      <div class="caption">
-        <!-- <h3>{{mockEvent.name}}</h3> -->
-        <div class="card-description">
-          <ul class='col-sm-6 col-md-4'>
-            <li>{{mockEvent.name}}</li>
-            <li>{{mockEvent.category}}</li>
-          </ul>
-          <p class='card-time col-sm-6 col-md-4'>{{mockEvent.time | date: 'h:mm'}}</p>
+  <div class="row">
+    <div class="col-xs-18 col-sm-6 col-md-3">
+      <div class="thumbnail">
+        <img src= {{mockEvent.cardImage}}>
+        <div class="caption">
+          <h4>{{mockEvent.name}}</h4>
+          <a href="#" class="btn btn-default btn-xs pull-right" role="button">
+            {{mockEvent.time | date : "h:mm a"}}
+          </a>
+          <a href="#" class="btn btn-info btn-xs" role="button">{{mockEvent.category}}</a>
+          <a href="#" class="btn btn-default btn-xs" role="button">{{mockEvent.distance}}</a>
         </div>
-        <!-- <p><a href="#" class="btn btn-primary" role="button">Button</a></p> -->
       </div>
     </div>
-  </div>
 
-</div>
-</div>
+
+    <div class="col-xs-18 col-sm-6 col-md-3">
+      <div class="thumbnail">
+        <img src= {{mockEvent.cardImage}}>
+        <div class="caption">
+          <h4>{{mockEvent.name}}</h4>
+          <a href="#" class="btn btn-default btn-xs pull-right" role="button">
+            {{mockEvent.time | date : "h:mm a"}}
+          </a>
+          <a href="#" class="btn btn-info btn-xs" role="button">{{mockEvent.category}}</a>
+          <a href="#" class="btn btn-default btn-xs" role="button">{{mockEvent.distance}}</a>
+        </div>
+      </div>
+    </div>
+
+
+    <div class="col-xs-18 col-sm-6 col-md-3">
+      <div class="thumbnail">
+        <img src= {{mockEvent.cardImage}}>
+        <div class="caption">
+          <h4>{{mockEvent.name}}</h4>
+          <a href="#" class="btn btn-default btn-xs pull-right" role="button">
+            {{mockEvent.time | date : "h:mm a"}}
+          </a>
+          <a href="#" class="btn btn-info btn-xs" role="button">{{mockEvent.category}}</a>
+          <a href="#" class="btn btn-default btn-xs" role="button">{{mockEvent.distance}}</a>
+        </div>
+      </div>
+    </div>
+
+
+  </div>
 </div>
