@@ -58,6 +58,7 @@ body {
 }
 .event-hour {
   font-size: 500%;
+  text-shadow: 1px 1px 1px #7D5C87;
 }
 
 .event-minutes {
@@ -70,11 +71,13 @@ body {
 
 .flyer {
   margin-top: 50px;
-  max-width: 100%
+  max-width: 100%;
+  box-shadow: 5px 5px 3px #888888;
 }
 
 .heading {
   font-size: 5em;
+  text-shadow: 1px 1px 1px #7D5C87;
 }
 
 .info {
@@ -87,6 +90,7 @@ body {
 }
 
 .map {
+  box-shadow: 5px 5px 3px #888888;
   display: inline-block;
   margin-top: 3%
 }
