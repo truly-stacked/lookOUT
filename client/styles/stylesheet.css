@@ -112,3 +112,17 @@ body {
 .thumbnail {
     padding:0;
 }
+
+/*Splash Page===================================================================*/
+
+.splashPageImg {
+    width: 100%;
+    height: 400px;
+    background-image: url('../assets/frontpage-image.jpg');
+    background-position: center;
+    /*background-size: cover;*/
+}
+
+.splashSearch {
+  height:10px;
+}
