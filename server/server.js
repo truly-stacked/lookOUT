@@ -3,6 +3,8 @@ const morgan = require ('morgan');
 const bodyParser = require('body-parser');
 const keys = require('../config/keys.js');
 const request = require ('request');
+const compare = require('compare-lat-lon');
+
 
 const app = express();
 
@@ -12,8 +14,9 @@ app.use(morgan('dev'));
 app.use(bodyParser.json());
 app.use(express.static('./client'));
 
-//++++ Routes
-// HELPER FUNCTION
+
+// HELPER -- 
+// Check for null
 let nullChecker = (event, arrayKeys) => {
   let solution = "";
   let position = 0;
@@ -31,7 +34,11 @@ let nullChecker = (event, arrayKeys) => {
   return solution;
 };
 
-//Return an object that contains all events. 
+// Parse distance given two long and lats
+
+
+
+// ROUTES --
 app.get('/results', (req, res) => {
 
   let searchLong = -73.9712 || req.query.long;
@@ -48,11 +55,13 @@ app.get('/results', (req, res) => {
   	+'&price='+searchPrice
   	+'&expand=venue,category', 
   	
-  	(err, body) => {
+  	function (err, body) {
       if(err) {
         console.log('YOU FAILED', err);
    	  }else{
    	    let eventbriteObj = JSON.parse(body.body).events;
+   	    let cloneObj = {};
+   	   
    	      	   
         // Object Constructor
         eventbriteObj.forEach( (event) => {
@@ -65,7 +74,13 @@ app.get('/results', (req, res) => {
    	      eventObj.venue = nullChecker(event,['venue','name']);
    	      eventObj.venueAddress = nullChecker(event,['venue','address','localized_address_display']);
    	      eventObj.description = nullChecker(event,['description','text']);
-   	      eventsObj.push(eventObj);
+   	      eventObj.lat = nullChecker(event,['venue','latitude']);
+   	      eventObj.long = nullChecker(event,['venue','longitude']);
+   	      eventObj.distance = compare(searchLat, searchLong, eventObj.lat, eventObj.long).toFixed(2) + ' km';
+   	      
+   	      cloneObj = JSON.parse(JSON.stringify(eventObj));
+   	      eventsObj.push(cloneObj);
+   	     
         });
           //console.log(eventsObj);
           res.json(eventsObj);
@@ -87,7 +102,7 @@ app.get('/filtered', (req, res) => {
   	+'&categories='+searchCat
   	+'&expand=venue,category', 
   	
-  	(err, body) => {
+  	function (err, body) {
       if(err) {
         console.log('YOU FAILED', err);
    	  }else{
@@ -119,7 +134,8 @@ app.get('/event', (req, res) => {
   request('https://www.eventbriteapi.com/v3/events/'+searchID
   	+'/?token='+keys.oAuthKey
   	+'&expand=venue,category',
-  	(err,body)=>{
+  	
+  	function (err,body) {
   	  if (err) {
   	  	console.log('You Fail', err);
   	  } else {
