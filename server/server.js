@@ -31,7 +31,7 @@ let nullChecker = (event, arrayKeys) => {
   return solution;
 };
 
-//Return an object that contains all events. 
+//Return an object that contains all events.
 app.get('/results', (req, res) => {
 
   let searchLong = -73.9712 || req.query.long;
@@ -46,14 +46,14 @@ app.get('/results', (req, res) => {
   	+'&location.longitude='+searchLong
   	+'&start_date.keyword='+searchDate
   	+'&price='+searchPrice
-  	+'&expand=venue,category', 
-  	
+  	+'&expand=venue,category',
+
   	(err, body) => {
       if(err) {
         console.log('YOU FAILED', err);
    	  }else{
    	    let eventbriteObj = JSON.parse(body.body).events;
-   	      	   
+
         // Object Constructor
         eventbriteObj.forEach( (event) => {
           eventObj.id = nullChecker(event,['id']);
@@ -85,14 +85,14 @@ app.get('/filtered', (req, res) => {
   	+'&start_date.keyword='+searchDate
   	+'&price='+searchPrice
   	+'&categories='+searchCat
-  	+'&expand=venue,category', 
-  	
+  	+'&expand=venue,category',
+
   	(err, body) => {
       if(err) {
         console.log('YOU FAILED', err);
    	  }else{
    	    let eventbriteObj = JSON.parse(body.body).events;
-   	      	   
+
         // Object Constructor
         eventbriteObj.forEach( (event) => {
           eventObj.id = nullChecker(event,['id']);
@@ -124,7 +124,7 @@ app.get('/event', (req, res) => {
   	  	console.log('You Fail', err);
   	  } else {
         let event = JSON.parse(body.body);
- 
+
         eventObj.id = nullChecker(event,['id']);
    	    eventObj.name = nullChecker(event,['name','text']);
    	    eventObj.time = nullChecker(event,['start','utc']);
@@ -134,7 +134,7 @@ app.get('/event', (req, res) => {
    	    eventObj.venue = nullChecker(event,['venue','name']);
    	    eventObj.venueAddress = nullChecker(event,['venue','address','localized_address_display']);
    	    eventObj.description = nullChecker(event,['description','text']);
- 		
+
  		res.json(eventObj);
   	  }
   	});
