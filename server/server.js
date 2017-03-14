@@ -9,6 +9,24 @@ const NodeGeocoder = require('node-geocoder');
 
 const app = express();
 
+let dataCleaner = (arr) =>{
+  let cleanedData=[];
+  for(key in arr){
+    if(arr[key]['id']!== 'TBD' &&
+       arr[key]['name']!== 'TBD' &&
+       arr[key]['time']!== 'TBD' &&
+       arr[key]['catName']!== 'TBD'&&
+       arr[key]['cardImage']!== 'TBD' &&
+       arr[key]['ogImage']!== 'TBD' &&
+       arr[key]['venue']!== 'TBD' &&
+       arr[key]['venueAddress']!== 'TBD' &&
+       arr[key]['description']!== 'TBD'){
+           cleanedData.push(arr[key])
+    }
+  }
+};
+
+
 
 //++++ init
 app.use(morgan('dev'));
@@ -42,26 +60,6 @@ let options = {
 };
 
 let geocoder = NodeGeocoder (options);
-
-
-//ROUTES
-let dataCleaner = (arr) =>{
-  let cleanedData=[];
-  for(key in arr){
-    if(arr[key]['id']!== 'TBD' &&
-       arr[key]['name']!== 'TBD' &&
-       arr[key]['time']!== 'TBD' &&
-       arr[key]['catName']!== 'TBD'&&
-       arr[key]['cardImage']!== 'TBD' &&
-       arr[key]['ogImage']!== 'TBD' &&
-       arr[key]['venue']!== 'TBD' &&
-       arr[key]['venueAddress']!== 'TBD' &&
-       arr[key]['description']!== 'TBD'){
-           cleanedData.push(arr[key])
-    }
-  }
-};
-
 
 
 //Return an object that contains all events.
