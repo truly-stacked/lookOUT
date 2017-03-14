@@ -111,7 +111,7 @@ geocoder.geocode(locationSearch)
    	      eventObj.description = nullChecker(event,['description','text']);
    	      eventObj.lat = nullChecker(event,['venue','latitude']);
    	      eventObj.long = nullChecker(event,['venue','longitude']);
-   	      eventObj.distance = compare(searchLat, searchLong, eventObj.lat, eventObj.long).toFixed(2) + ' km';
+   	      eventObj.distance = compare(searchLat, searchLong, eventObj.lat, eventObj.long)*(0.621371).toFixed(2) + ' mi';
 
    	      cloneObj = JSON.parse(JSON.stringify(eventObj));
    	      eventsObj.push(cloneObj);
