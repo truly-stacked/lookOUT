@@ -1,5 +1,5 @@
 angular.module('lookoutApp.splash', [])
-.controller('splashCtrl', function($scope, $location, dataFactory, eventFactory) {
+.controller('splashCtrl', function($scope, $location, dataFactory, eventFactory, resultsFactory) {
 
   $scope.mockEvent = {
     id: 1001,
@@ -12,9 +12,10 @@ angular.module('lookoutApp.splash', [])
     address: "369 Lexington Ave",
     distance: "0.5 mi"
   }
-  $scope.getEvents = function(){
-    dataFactory.getAll().then(function(results){
-      console.log(results);
+  $scope.getEvents = function(location){
+    dataFactory.getAll(location).then(function(results){
+      resultsFactory.insertResults(results);
+      $location.path('/results');
     });
   }
 
