@@ -4,6 +4,7 @@ const bodyParser = require('body-parser');
 const keys = require('../config/keys.js');
 const request = require ('request');
 const compare = require('compare-lat-lon');
+const NodeGeocoder = require('node-geocoder');
 
 
 const app = express();
@@ -34,15 +35,37 @@ let nullChecker = (event, arrayKeys) => {
   return solution;
 };
 
+let options = {
+	provider: 'google',
+	httpAdapter: 'https',
+	formatter: null
+};
+
+let geocoder = NodeGeocoder (options);
+
+
 // ROUTES --
 app.get('/results', (req, res) => {
 
+  let locationSearch = (req.query.location);
   let searchLong = -73.9712 || req.query.long;
   let searchLat = 40.7831 || req.query.lat;
   let searchDate = 'today' || req.query.date;
   let searchPrice = 'free';
   let eventsObj = [];
   let eventObj = {};
+
+
+
+geocoder.geocode(locationSearch)
+  .then(function(res) {
+  	searchLat = res[0].latitude;
+    searchLong = res[0].longitude;
+  })
+  .catch(function(err) {
+    console.log(err);
+  });
+
 
   request('https://www.eventbriteapi.com/v3/events/search/?token='+keys.oAuthKey
   	+'&location.latitude='+searchLat
@@ -58,7 +81,7 @@ app.get('/results', (req, res) => {
    	    let eventbriteObj = JSON.parse(body.body).events;
    	    let cloneObj = {};
    	   
-   	      	   
+   	      	    
         // Object Constructor
         eventbriteObj.forEach( (event) => {
           eventObj.id = nullChecker(event,['id']);
@@ -131,6 +154,12 @@ app.get('/filtered', (req, res) => {
 });
 
 app.get('/event', (req, res) => {
+
+geocoder.geocode('29 champs elysée paris', function(err, res) {
+  console.log(res);
+});
+
+
   let searchLong = -73.9712 || req.query.long;
   let searchLat = 40.7831 || req.query.lat;
   let searchID = 32807965508 || req.query.id; // temp placeholder
