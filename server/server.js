@@ -44,23 +44,23 @@ let options = {
 let geocoder = NodeGeocoder (options);
 
 
-// ROUTES --
-// let dataCleaner = (arr) =>{
-//   let cleanedData=[];
-//   for(key in arr){
-//     if(arr[key]['id']!== 'TBD' &&
-//        arr[key]['name']!== 'TBD' &&
-//        arr[key]['time']!== 'TBD' &&
-//        arr[key]['catName']!== 'TBD'&&
-//        arr[key]['cardImage']!== 'TBD' &&
-//        arr[key]['ogImage']!== 'TBD' &&
-//        arr[key]['venue']!== 'TBD' &&
-//        arr[key]['venueAddress']!== 'TBD' &&
-//        arr[key]['description']!== 'TBD'){
-//            cleanedData.push(arr[key])
-//     }
-//   }
-// };
+ROUTES --
+let dataCleaner = (arr) =>{
+  let cleanedData=[];
+  for(key in arr){
+    if(arr[key]['id']!== 'TBD' &&
+       arr[key]['name']!== 'TBD' &&
+       arr[key]['time']!== 'TBD' &&
+       arr[key]['catName']!== 'TBD'&&
+       arr[key]['cardImage']!== 'TBD' &&
+       arr[key]['ogImage']!== 'TBD' &&
+       arr[key]['venue']!== 'TBD' &&
+       arr[key]['venueAddress']!== 'TBD' &&
+       arr[key]['description']!== 'TBD'){
+           cleanedData.push(arr[key])
+    }
+  }
+};
 
 
 
@@ -69,32 +69,29 @@ let geocoder = NodeGeocoder (options);
 app.get('/results', (req, res) => {
 
   let locationSearch = (req.query.location);
-  let searchLong = -73.9712 || req.query.long;
-  let searchLat = 40.7831 || req.query.lat;
+  let searchLong = -73.9712;
+  let searchLat = 40.7831;
   let searchDate = 'today' || req.query.date;
   let searchPrice = 'free';
+  let locationWithin = '1mi';
   let eventsObj = [];
   let eventObj = {};
   let cleanedData = [];
-
 
 
 geocoder.geocode(locationSearch)
   .then(function(res) {
   	searchLat = res[0].latitude;
     searchLong = res[0].longitude;
-  })
-  .catch(function(err) {
-    console.log(err);
-  });
-
-
+  }).then(function(){
+    
   request('https://www.eventbriteapi.com/v3/events/search/?token='+keys.oAuthKey
   	+'&location.latitude='+searchLat
   	+'&location.longitude='+searchLong
   	+'&start_date.keyword='+searchDate
   	+'&price='+searchPrice
-  	+'&expand=venue,category',
+  	+'location.within='+locationWithin
+  	+'&expand=venue,category', 
 
   	function (err, body) {
       if(err) {
@@ -122,17 +119,16 @@ geocoder.geocode(locationSearch)
    	      eventsObj.push(cloneObj);
 
         });
-
-          // let finalData = dataCleaner(eventsObj)
-
-          //console.log(eventsObj);
           res.json(eventsObj);
       }
     });
+  });
 });
 
 
 app.get('/filtered', (req, res) => {
+
+
   let searchCat = 115 || req.query.cat; // temp placehold for Family & Education
   let searchLong = -73.9712 || req.query.long;
   let searchLat = 40.7831 || req.query.lat;
