@@ -1,9 +1,9 @@
-<div class="container">
-
-
+<div class="container-fluid">
   <div class="row">
     <div class='splashPageImg'></div>
   </div>
+</div>
+<div class="container">
 
   <div class="row">
     <div class='splashSearch'></div>
@@ -13,7 +13,7 @@
   <div class="row">
 
 
-    <div class="col-xs-18 col-sm-6 col-md-3">
+    <div class="col-xs-18 col-sm-6 col-md-4">
       <div class="thumbnail">
         <img src= {{mockEvent.cardImage}}>
         <div class="caption">
@@ -28,7 +28,7 @@
     </div>
 
 
-    <div class="col-xs-18 col-sm-6 col-md-3">
+    <div class="col-xs-18 col-sm-6 col-md-4">
       <div class="thumbnail">
         <img src= {{mockEvent.cardImage}}>
         <div class="caption">
@@ -43,22 +43,7 @@
     </div>
 
 
-    <div class="col-xs-18 col-sm-6 col-md-3">
-      <div class="thumbnail">
-        <img src= {{mockEvent.cardImage}}>
-        <div class="caption">
-          <h4>{{mockEvent.name}}</h4>
-          <a href="#" class="btn btn-default btn-xs pull-right" role="button">
-            {{mockEvent.time | date : "h:mm a"}}
-          </a>
-          <a href="#" class="btn btn-info btn-xs" role="button">{{mockEvent.category}}</a>
-          <a href="#" class="btn btn-default btn-xs" role="button">{{mockEvent.distance}}</a>
-        </div>
-      </div>
-    </div>
-
-
-    <div class="col-xs-18 col-sm-6 col-md-3">
+    <div class="col-xs-18 col-sm-6 col-md-4">
       <div class="thumbnail">
         <img src= {{mockEvent.cardImage}}>
         <div class="caption">

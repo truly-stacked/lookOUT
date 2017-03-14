@@ -117,10 +117,13 @@ body {
 
 .splashPageImg {
     width: 100%;
-    height: 400px;
-    background-image: url('../assets/frontpage-image.jpg');
+    height: 300px;
     background-position: center;
-    /*background-size: cover;*/
+    background-image: url('../assets/frontpage-image.jpg');
+    background-size: cover;
+}
+.navbar {
+  margin-bottom: 0px;
 }
 
 .splashSearch {
