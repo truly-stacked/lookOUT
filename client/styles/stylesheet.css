@@ -109,17 +109,20 @@ body {
 
 /*CARD WORK===================================================================*/
 
-.card-description {
-  display: block;
-}
-.card-time {
-  font-size: 30px;
-}
-.cont {
-  border: 1px solid #ddd
-}
 .thumbnail {
-  border: none;
-  padding-left: 1px;
-  padding-right: 1px;
+    padding:0;
+}
+
+/*Splash Page===================================================================*/
+
+.splashPageImg {
+    width: 100%;
+    height: 400px;
+    background-image: url('../assets/frontpage-image.jpg');
+    background-position: center;
+    /*background-size: cover;*/
+}
+
+.splashSearch {
+  height:10px;
 }
