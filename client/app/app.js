@@ -25,21 +25,66 @@ angular.module('lookoutApp',[
   })
   .factory('dataFactory', function($http) {
     const getAll = function() {
-      console.log("Got all events!");
+      return $http.get('/results')
+      .then(
+      function(results){
+        //Successful get request function and message
+        console.log("Got all events!");
+        return results
+      })
+      .catch(
+        function(err){
+          console.log("ERROR!")
+        });
     }
 
     const getFiltered = function(catagory) {
-      console.log("Got filtered events!");
+      return $http({
+        method: 'GET',
+        url: '/filtered',
+        params: {catagory:catagory}
+      })
+      .then(
+        function(results){
+          //Successful get request function and message
+          console.log("Got filtered events!");
+          return results
+        })
+        .catch(
+          function(err){
+            throw new Error(err)
+          });
+      }
+
+      const getEvent = function(eventID) {
+        return $http({
+          method: 'GET',
+          url: '/event',
+          params: {eventID:eventID}
+        })
+        .then(
+          function(result){
+            //Successful get request function and message
+            console.log("Got a single event!");
+            return result
+          })
+        .catch(
+          function(err){
+            throw new Error(err)
+          });
+      }
+
+      return {
+        getAll : getAll,
+        getFiltered : getFiltered,
+        getEvent : getEvent
+    }
+  })
+  .factory('eventFactory', function($http) {
+    var current = {}
+    current.insertEvent = function(value) {
+      current.event = value
     }
 
-    const getEvent = function(eventID) {
-      console.log("Got a single event!");
-    }
-
-    return {
-      getAll : getAll,
-      getFiltered : getFiltered,
-      getEvent : getEvent
-    }
-
-  });
+    return current;
+  })
