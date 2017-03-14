@@ -1,6 +1,7 @@
 body {
   background-color: #FFFFF6;
   color: #342638;
+  font-family: 'Libre Franklin', sans-serif;
   height: 100%;
 }
 .align {
@@ -52,6 +53,21 @@ body {
   font-size: 30%;
   font-style: italic;
 }
+.event-time {
+  flex-direction: row;
+}
+.event-hour {
+  font-size: 500%;
+}
+
+.event-minutes {
+}
+
+.details {
+  display: inline-flex;
+  width: 100%;
+}
+
 .flyer {
   margin-top: 50px;
   max-width: 100%
@@ -62,7 +78,9 @@ body {
 }
 
 .info {
-  display: inline-block;
+  flex-direction: row;
+  margin-left: 3%;
+  margin-top: 3%;
 }
 .lead {
   padding-right: 25%;
@@ -72,6 +90,15 @@ body {
   display: inline-block;
   margin-top: 3%
 }
+
 .title {
   border-bottom-style: dotted;
+}
+
+.venue-address {
+  font-style: italic;
+}
+
+.venue-name {
+  font-size: 225%;
 }

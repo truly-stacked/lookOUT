@@ -4,19 +4,23 @@
       <h1 class="heading">{{ mockEvent.name }}<span class="event-category">{{ mockEvent.category}}</span></h1>
       <p class="lead"> {{ mockEvent.description }}</p>
     </div>
-      <div class ="map">
-        <iframe
-          width="300"
-          height="225"
-          frameborder="0" style="border:0"
-          src="https://www.google.com/maps/embed/v1/place?key=AIzaSyDanwxT0CdlMhsj0D2Yn-t6gNZ6K3_Pjfs
-            &q=Hack+Reactor,New+York+NY" allowfullscreen>
-        </iframe>
-      </div>
-      <div class="info">
-        <div class"event-time">{{mockEvent.time | date : "h:mm a"}}</div>
-        <div class="venue-name">{{ mockEvent.venue }}</div>
-        <div class="venue-address">{{ mockEvent.address }}</div>
+      <div class="details">
+        <div class ="map">
+          <iframe
+            width="400"
+            height="225"
+            frameborder="0" style="border:0"
+            ng-src="{{mapUrl}}" allowfullscreen>
+          </iframe>
+        </div>
+        <div class="info">
+          <div class"event-time">
+            <span class="event-hour">{{mockEvent.time | date : "h"}}</span>
+            <span class="event-minutes">{{ mockEvent.time | date : "mm a"}}</span>
+          </div>
+          <div class="venue-name">{{ mockEvent.venue }}</div>
+          <p class="venue-address">{{ mockEvent.address }}</p>
+        </div>
       </div>
   </div>
   <div class=" container col-md-5">
