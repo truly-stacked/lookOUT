@@ -47,7 +47,7 @@ angular.module('lookoutApp',[
       return $http({
         method: 'GET',
         url: '/filtered',
-        params: {category:category}
+        params: {category:category, address:address}
       })
       .then(
         function(results){
