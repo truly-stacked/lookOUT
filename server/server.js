@@ -17,6 +17,7 @@ app.use(express.static('./client'));
 
 
 // HELPER --
+// JO JO
 // Check for null
 let nullChecker = (event, arrayKeys) => {
   let solution = "";
