@@ -22,6 +22,10 @@ angular.module('lookoutApp',[
         templateUrl: 'app/results/results.html',
         controller: 'resultsCtrl'
       })
+      .otherwise({
+        templateUrl: 'app/splash/splash.html',
+        controller: 'splashCtrl'
+      })
   })
   .factory('dataFactory', function($http) {
     const getAll = function(location) {
