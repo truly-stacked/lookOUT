@@ -114,7 +114,7 @@ body {
 
 .splashPageImg {
     width: 100vw;
-    height: 100vh;
+    height: 55vh;
     background-position: center;
     background-image: url('../assets/jacob-repko-64098.jpg');
     /*background-image: url('../assets/jan-senderek-193369.jpg');*/
@@ -124,11 +124,11 @@ body {
   margin-bottom: 0px;
 }
 
-.splashSearch {
+/*.splashSearch {
   text-align: center;position: fixed;
   top: 50%;
   left: 45%;
-}
+}*/
 
 /*Results Page================================================================*/
 
