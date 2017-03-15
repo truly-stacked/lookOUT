@@ -94,6 +94,10 @@ body {
 }
 /*CARD WORK===================================================================*/
 
+.resultsCard {
+  max-height: 100%;
+}
+
 .thumbnail {
     padding:0;
 }
