@@ -45,73 +45,67 @@ body {
 }
 /*EVENT PAGE==================================================================*/
 .event-container {
-  margin-top: 50px;
+  margin: 0 auto;
+  margin-top: 5%;
+  height: auto;
+  width: 75%;
 }
 
-.event-category {
-  margin-left: 3%;
-  font-size: 30%;
-  font-style: italic;
+.img-responsive {
+  max-height: 30em;
 }
-.event-time {
-  flex-direction: row;
+
+.event-name {
+  font-size: 2em;
+  height: 8.5em;
+  width: 100%;
+  overflow: auto;
+  word-wrap: break-word;
+  text-shadow: 1px 1px 1px #7D5C87;
 }
+
 .event-hour {
   font-size: 500%;
   text-shadow: 1px 1px 1px #7D5C87;
 }
 
-.event-minutes {
+.event-venue {
+  font-size: 150%;
 }
 
-.details {
-  display: inline-flex;
-  width: 100%;
+.event-distance {
+  font-size: 150%;
 }
 
-.flyer {
-  margin-top: 5%;
-  max-width: 100%;
-  box-shadow: 5px 5px 3px #888888;
-}
-
-.heading {
-  font-size: 5em;
-  text-shadow: 1px 1px 1px #7D5C87;
-}
-
-.info {
-  flex-direction: row;
-  margin-left: 3%;
-  margin-top: 3%;
-}
-.lead {
-  padding-right: 25%;
-}
-
-.map {
-  box-shadow: 5px 5px 3px #888888;
-  display: inline-block;
-  margin-top: 3%
-}
-
-.title {
-  border-bottom-style: dotted;
-}
-
-.venue-address {
+.event-address {
   font-style: italic;
 }
 
-.venue-name {
-  font-size: 225%;
+.event-description-header {
+  text-shadow: 1px 1px 1px #7D5C87;
 }
 
+.event-location-header {
+  text-shadow: 1px 1px 1px #7D5C87;
+}
+
+.map {
+  margin-top: 5%;
+}
 /*CARD WORK===================================================================*/
+
+.resultsCard {
+  max-height: 100%;
+}
 
 .thumbnail {
     padding:0;
 }
+
+.card-image {
+  height: 200px !important;
+}
+
 .cardName {
   height:50px;
   text-overflow: ellipsis;
@@ -121,14 +115,13 @@ body {
   background-color: #90589A;
   color: #FFFFFF;
 }
-
 /*Splash Page===================================================================*/
 
 .splashPageImg {
-    width: 100%;
-    height: 300px;
+    width: 100vw;
+    height: 55vh;
     background-position: center;
-    background-image: url('../assets/frontpage-image.jpg');
+    background-image: url('../assets/jacob-repko-64098.jpg');
     background-size: cover;
 }
 .navbar {
