@@ -99,13 +99,14 @@ geocoder.geocode(locationSearch)
 		  //console.log('New Entry -->', eventObj.description.length, eventObj.shortD);
    	     //console.log(eventObj.shortD);
 
-   	      //cleans object
-   	      if(Object.values(eventObj).indexOf('TBD') > -1){
-   	      	//console.log('Not included, has TBD');
-   	      } else {
-   	      	cloneObj = JSON.parse(JSON.stringify(eventObj));
-   	      	eventsObj.push(cloneObj);
-   	      }
+         let isTBD = Object.keys(eventObj).map((key) => {
+           return eventObj[key];
+         }).indexOf('TBD') > 1
+
+         if(!isTBD) {
+           cloneObj = JSON.parse(JSON.stringify(eventObj));
+           eventsObj.push(cloneObj);
+         }
         });
           res.json(eventsObj);
       }
