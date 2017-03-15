@@ -47,7 +47,7 @@ angular.module('lookoutApp',[
         });
     }
 
-    const getFiltered = function(category) {
+    const getFiltered = function(category, location) {
       return $http({
         method: 'GET',
         url: '/filtered',
