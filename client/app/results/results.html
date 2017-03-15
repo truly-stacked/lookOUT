@@ -1,6 +1,6 @@
 <div class="results-container">
   <div class="container">
-    <div ng-click="openEvent(result)" ng-repeat="result in results">
+    <div ng-click="openEvent(result)" ng-repeat="result in results | orderBy: 'distance'">
       <div class="col-xs-18 col-sm-6 col-md-4">
         <div class="thumbnail">
           <img src= {{result.cardImage}}>
