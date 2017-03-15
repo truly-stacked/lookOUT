@@ -9,7 +9,7 @@ angular.module('lookoutApp.splash', [])
   }
 
   $scope.getFilteredEvents = function(category) {
-    let location = "369 lexington ave NY, NY"
+    let location = "1216 Broadway NY, NY"
     dataFactory.getFiltered(category, location).then(function(results) {
       resultsFactory.insertResults(results);
       $location.path('/results');
