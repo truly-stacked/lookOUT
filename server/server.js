@@ -96,7 +96,8 @@ geocoder.geocode(locationSearch)
    	      eventObj.long = nullChecker(event,['venue','longitude']);
    	      eventObj.distance = (0.621371*(compare(searchLat, searchLong, eventObj.lat, eventObj.long))).toFixed(2) + ' mi';
    	      eventObj.shortName = (eventObj.name.length < 80) ? nullChecker(event,['name','text']).slice(0,80) : nullChecker(event,['name','text']).slice(0,80)+"..";
-		  //console.log('New Entry -->', eventObj.description.length, eventObj.shortD);
+		      eventObj.html = nullChecker(event,['description','html']);
+      //console.log('New Entry -->', eventObj.description.length, eventObj.shortD);
    	     //console.log(eventObj.shortD);
 
    	      //cleans object
@@ -192,19 +193,19 @@ geocoder.geocode(locationSearch)
           // Object Constructor
           eventbriteObj.forEach( (event) => {
             eventObj.id = nullChecker(event,['id']);
-     	      eventObj.name = nullChecker(event,['name','text']);
-     	      eventObj.time = nullChecker(event,['start','utc']);
-     	      eventObj.catName = nullChecker(event,['category','name']);
-     	      eventObj.cardImage = nullChecker(event,['logo','url']);
-     	      eventObj.ogImage = nullChecker(event,['logo','original','url']);
-     	      eventObj.venue = nullChecker(event,['venue','name']);
-     	      eventObj.venueAddress = nullChecker(event,['venue','address','localized_address_display']);
-     	      eventObj.description = nullChecker(event,['description','text']);
-     	      eventObj.lat = nullChecker(event,['venue','latitude']);
-     	      eventObj.long = nullChecker(event,['venue','longitude']);
-     	      eventObj.distance = (0.621371*(compare(searchLat, searchLong, eventObj.lat, eventObj.long))).toFixed(2) + ' mi';
-  			  eventObj.shortD = (eventObj.description.length < 60) ? nullChecker(event,['description','text']).slice(0,60) : nullChecker(event,['description','text']).slice(0,60)+"..";
-
+            eventObj.name = nullChecker(event,['name','text']);
+            eventObj.time = nullChecker(event,['start','utc']);
+            eventObj.catName = nullChecker(event,['category','name']);
+            eventObj.cardImage = nullChecker(event,['logo','url']);
+            eventObj.ogImage = nullChecker(event,['logo','original','url']);
+            eventObj.venue = nullChecker(event,['venue','name']);
+            eventObj.venueAddress = nullChecker(event,['venue','address','localized_address_display']);
+            eventObj.description = nullChecker(event,['description','text']);
+            eventObj.lat = nullChecker(event,['venue','latitude']);
+            eventObj.long = nullChecker(event,['venue','longitude']);
+            eventObj.distance = (0.621371*(compare(searchLat, searchLong, eventObj.lat, eventObj.long))).toFixed(2) + ' mi';
+            eventObj.shortName = (eventObj.name.length < 80) ? nullChecker(event,['name','text']).slice(0,80) : nullChecker(event,['name','text']).slice(0,80)+"..";
+            eventObj.html = nullChecker(event,['description','html']);
   			  console.log(eventObj.shortD);
      	      //cleans object
    	          if(Object.values(eventObj).indexOf('TBD') > -1){
