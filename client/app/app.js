@@ -24,22 +24,80 @@ angular.module('lookoutApp',[
       })
   })
   .factory('dataFactory', function($http) {
-    const getAll = function() {
-      console.log("Got all events!");
+    const getAll = function(location) {
+      console.log(location)
+      return $http({
+        method: 'GET',
+        url: '/results',
+        params: {location: location}
+      })
+      .then(
+      function(results){
+        //Successful get request function and message
+        console.log("Got all events!");
+        return results
+      })
+      .catch(
+        function(err){
+          console.log("ERROR!")
+        });
     }
 
-    const getFiltered = function(catagory) {
-      console.log("Got filtered events!");
+    const getFiltered = function(category) {
+      return $http({
+        method: 'GET',
+        url: '/filtered',
+        params: {category:category}
+      })
+      .then(
+        function(results){
+          //Successful get request function and message
+          console.log("Got filtered events!");
+          return results
+        })
+        .catch(
+          function(err){
+            throw new Error(err)
+          });
+      }
+
+      const getEvent = function(eventID) {
+        return $http({
+          method: 'GET',
+          url: '/event',
+          params: {eventID:eventID}
+        })
+        .then(
+          function(result){
+            //Successful get request function and message
+            console.log("Got a single event!");
+            return result
+          })
+        .catch(
+          function(err){
+            throw new Error(err)
+          });
+      }
+
+      return {
+        getAll : getAll,
+        getFiltered : getFiltered,
+        getEvent : getEvent
+    }
+  })
+  .factory('eventFactory', function($http) {
+    var current = {}
+    current.insertEvent = function(value) {
+      current.event = value;
     }
 
-    const getEvent = function(eventID) {
-      console.log("Got a single event!");
+    return current;
+  })
+  .factory('resultsFactory', function($http) {
+    var current = {}
+    current.insertResults = function(results) {
+      current.results = results;
     }
 
-    return {
-      getAll : getAll,
-      getFiltered : getFiltered,
-      getEvent : getEvent
-    }
-
-  });
+    return current
+  })
