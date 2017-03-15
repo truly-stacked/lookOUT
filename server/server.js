@@ -94,11 +94,13 @@ geocoder.geocode(locationSearch)
    	      eventObj.lat = nullChecker(event,['venue','latitude']);
    	      eventObj.long = nullChecker(event,['venue','longitude']);
    	      eventObj.distance = (0.621371*(compare(searchLat, searchLong, eventObj.lat, eventObj.long))).toFixed(2) + ' mi';
-   	      
+   	      eventObj.shortD = (eventObj.description.length < 60) ? nullChecker(event,['description','text']).slice(0,60) : nullChecker(event,['description','text']).slice(0,60)+"..";
+		  //console.log('New Entry -->', eventObj.description.length, eventObj.shortD);
+   	     //console.log(eventObj.shortD);
 
    	      //cleans object
    	      if(Object.values(eventObj).indexOf('TBD') > -1){
-   	      	console.log('Not included, has TBD');
+   	      	//console.log('Not included, has TBD');
    	      } else {
    	      	cloneObj = JSON.parse(JSON.stringify(eventObj));
    	      	eventsObj.push(cloneObj);
@@ -200,8 +202,9 @@ geocoder.geocode(locationSearch)
      	      eventObj.lat = nullChecker(event,['venue','latitude']);
      	      eventObj.long = nullChecker(event,['venue','longitude']);
      	      eventObj.distance = (0.621371*(compare(searchLat, searchLong, eventObj.lat, eventObj.long))).toFixed(2) + ' mi';
-  
+  			  eventObj.shortD = (eventObj.description.length < 60) ? nullChecker(event,['description','text']).slice(0,60) : nullChecker(event,['description','text']).slice(0,60)+"..";
 
+  			  console.log(eventObj.shortD);
      	      //cleans object
    	          if(Object.values(eventObj).indexOf('TBD') > -1){
    	          	console.log('Not included, has TBD');
@@ -218,40 +221,40 @@ geocoder.geocode(locationSearch)
 
 
 // not being used at the moment.
-app.get('/event', (req, res) => {
+// app.get('/event', (req, res) => {
 
-  let searchLong = -73.9712 || req.query.long;
-  let searchLat = 40.7831 || req.query.lat;
-  let searchID = req.query.eventID; // temp placeholder
-  let eventObj = {};
+//   let searchLong = -73.9712 || req.query.long;
+//   let searchLat = 40.7831 || req.query.lat;
+//   let searchID = req.query.eventID; // temp placeholder
+//   let eventObj = {};
 
-  request('https://www.eventbriteapi.com/v3/events/'+searchID
-  	+'/?token='+keys.oAuthKey
-  	+'&expand=venue,category',
+//   request('https://www.eventbriteapi.com/v3/events/'+searchID
+//   	+'/?token='+keys.oAuthKey
+//   	+'&expand=venue,category',
 
-  	function (err,body) {
-  	  if (err) {
-  	  	console.log('You Fail', err);
-  	  } else {
-        let event = JSON.parse(body.body);
+//   	function (err,body) {
+//   	  if (err) {
+//   	  	console.log('You Fail', err);
+//   	  } else {
+//         let event = JSON.parse(body.body);
 
-        eventObj.id = nullChecker(event,['id']);
-   	    eventObj.name = nullChecker(event,['name','text']);
-   	    eventObj.time = nullChecker(event,['start','utc']);
-   	    eventObj.catName = nullChecker(event,['category','name']);
-   	    eventObj.cardImage = nullChecker(event,['logo','url']);
-   	    eventObj.ogImage = nullChecker(event,['logo','original','url']);
-   	    eventObj.venue = nullChecker(event,['venue','name']);
-   	    eventObj.venueAddress = nullChecker(event,['venue','address','localized_address_display']);
-   	    eventObj.description = nullChecker(event,['description','text']);
-   	    eventObj.lat = nullChecker(event,['venue','latitude']);
-   	    eventObj.long = nullChecker(event,['venue','longitude']);
-   	    eventObj.distance = (0.621371*(compare(searchLat, searchLong, eventObj.lat, eventObj.long))).toFixed(2) + ' mi';
-
- 		//res.json(eventObj);
-  	  }
-  	});
-});
+//         eventObj.id = nullChecker(event,['id']);
+//    	    eventObj.name = nullChecker(event,['name','text']);
+//    	    eventObj.time = nullChecker(event,['start','utc']);
+//    	    eventObj.catName = nullChecker(event,['category','name']);
+//    	    eventObj.cardImage = nullChecker(event,['logo','url']);
+//    	    eventObj.ogImage = nullChecker(event,['logo','original','url']);
+//    	    eventObj.venue = nullChecker(event,['venue','name']);
+//    	    eventObj.venueAddress = nullChecker(event,['venue','address','localized_address_display']);
+//    	    eventObj.description = nullChecker(event,['description','text']);
+//    	    eventObj.lat = nullChecker(event,['venue','latitude']);
+//    	    eventObj.long = nullChecker(event,['venue','longitude']);
+//    	    eventObj.distance = (0.621371*(compare(searchLat, searchLong, eventObj.lat, eventObj.long))).toFixed(2) + ' mi';
+//    	    eventObj.shortD = nullChecker(event,['description','text']).slice(0,60)+"..";
+//  		//res.json(eventObj);
+//   	  }
+//   	});
+// });
 
 
 app.listen(process.env.port||8888);
