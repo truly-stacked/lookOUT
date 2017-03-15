@@ -1,6 +1,5 @@
 angular.module('lookoutApp.event', [])
 .controller('eventCtrl', function($scope, $sce, eventFactory, dataFactory) {
-
   $scope.event = eventFactory.event;
   console.log($scope.event)
   $scope.escapedAddress = $scope.event.venueAddress.split(" ").join("%20");
