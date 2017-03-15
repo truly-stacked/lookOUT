@@ -6,27 +6,7 @@ const request = require ('request');
 const compare = require('compare-lat-lon');
 const NodeGeocoder = require('node-geocoder');
 
-
 const app = express();
-
-let dataCleaner = (arr) =>{
-  let cleanedData=[];
-  for(key in arr){
-    if(arr[key]['id']!== 'TBD' &&
-       arr[key]['name']!== 'TBD' &&
-       arr[key]['time']!== 'TBD' &&
-       arr[key]['catName']!== 'TBD'&&
-       arr[key]['cardImage']!== 'TBD' &&
-       arr[key]['ogImage']!== 'TBD' &&
-       arr[key]['venue']!== 'TBD' &&
-       arr[key]['venueAddress']!== 'TBD' &&
-       arr[key]['description']!== 'TBD'){
-           cleanedData.push(arr[key])
-    }
-  }
-};
-
-
 
 //++++ init
 app.use(morgan('dev'));
@@ -113,8 +93,15 @@ geocoder.geocode(locationSearch)
    	      eventObj.long = nullChecker(event,['venue','longitude']);
    	      eventObj.distance = (0.621371*(compare(searchLat, searchLong, eventObj.lat, eventObj.long))).toFixed(2) + ' mi';
    	      
-   	      cloneObj = JSON.parse(JSON.stringify(eventObj));
-   	      eventsObj.push(cloneObj);
+
+   	      //cleans object
+   	      if(Object.values(eventObj).indexOf('TBD') > -1){
+   	      	console.log('Not included, has TBD');
+   	      } else {
+   	      	cloneObj = JSON.parse(JSON.stringify(eventObj));
+   	      	eventsObj.push(cloneObj);
+   	      }  	      
+  
 
         });
           res.json(eventsObj);
