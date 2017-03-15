@@ -44,6 +44,14 @@ body {
   padding: 30px;
 }
 /*EVENT PAGE==================================================================*/
+.event-hr {
+	height: 6px;
+	background: url(http://ibrahimjabbari.com/english/images/hr-11.png) repeat-x 0 0;
+    border: 0;
+}
+.event-category {
+  font-style: italic;
+}
 .event-container {
   margin: 0 auto;
   margin-top: 5%;
