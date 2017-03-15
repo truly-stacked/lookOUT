@@ -20,6 +20,7 @@
     </div>
     <div class="col-md-4 event-info">
       <div class="event-name">{{ event.name }}</div>
+      <div class="event-category">{{ event.catName }}</div>
       <div class"event-time">
         <span class="event-hour">{{ event.time | date : "h" }}</span>
         <span class="event-minutes">{{ event.time | date : "mm a" }}</span>
