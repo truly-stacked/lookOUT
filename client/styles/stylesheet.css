@@ -53,6 +53,7 @@ body {
 
 .img-responsive {
   max-height: 30em;
+  box-shadow: 2px 2px 10px #2d1c31;
 }
 
 .event-name {
@@ -91,6 +92,7 @@ body {
 
 .map {
   margin-top: 5%;
+  box-shadow: 3px 3px 15px #2d1c31;
 }
 /*CARD WORK===================================================================*/
 
