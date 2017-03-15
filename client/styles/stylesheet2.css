@@ -1,16 +1,9 @@
-.catNav {
-  text-align: center;
-  list-style-type: none;
-  margin: 0;
-  padding: 0;
-  display:inline;
+.navbar {
+  background-color: #90589A;
 }
-
-.catNav li {
-  padding-right: 10%;
-  float:left;
+.navbar-default {
+  border-color: #90589A;
 }
-.catNav li a{
-  color: #90589A;
-  font-size: 25px;
+.navbar-brand {
+  color: white !important;
 }
