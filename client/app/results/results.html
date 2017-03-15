@@ -19,7 +19,7 @@
     <div ng-click="openEvent(result)" ng-repeat="result in results | orderBy: 'distance'">
       <div ng-model="resultsCard" class="col-xs-18 col-sm-6 col-md-4">
         <div class="thumbnail">
-          <img src= {{result.cardImage}}>
+          <img class='card-image' src= {{result.cardImage}} alt="picture">
           <div class="caption">
             <h4 class='cardName'>{{result.name}}</h4>
             <a href="#" class="btn btn-default btn-xs pull-right" role="button">
