@@ -1,29 +1,35 @@
-<div class="event-container">
-  <div class="container col-md-7">
-    <div class="title">
-      <h1 class="heading">{{ event.name }}<span class="event-category">{{ event.category}}</span></h1>
-      <p class="lead"> {{ event.description }}</p>
+<div class="event-container center">
+  <div class ="row">
+    <div class="col-md-8">
+      <img class="img-responsive img-rounded" ng-src={{event.ogImage}}>
     </div>
-      <div class="details">
-        <div class ="map">
-          <iframe
-            width="400"
-            height="225"
-            frameborder="0" style="border:0"
-            ng-src="{{mapUrl}}" allowfullscreen>
-          </iframe>
-        </div>
-        <div class="info">
-          <div class"event-time">
-            <span class="event-hour">{{event.time | date : "h"}}</span>
-            <span class="event-minutes">{{ event.time | date : "mm a"}}</span>
-          </div>
-          <div class="venue-name">{{ event.venue }}</div>
-          <p class="venue-address">{{ event.venueAddress }}</p>
-        </div>
+    <div class="col-md-4 event-info">
+      <div class="event-name">{{ event.name }}</div>
+      <div class"event-time">
+        <span class="event-hour">{{ event.time | date : "h" }}</span>
+        <span class="event-minutes">{{ event.time | date : "mm a" }}</span>
       </div>
+      <div class="event-distance">{{ event.distance }} away</div>
+    </div>
   </div>
-  <div class=" container col-md-5">
-    <img class="flyer img-rounded pull-right" src= {{event.ogImage}}>
+<hr>
+  <div class="row">
+    <div class="col-md-8">
+      <h4 class="event-description-header">Description:</h4>
+      <div class="event-description">{{ event.description }}</div>
+    </div>
+    <div class="col-md-4 test">
+      <h4 class="event-location-header">Location:</h4>
+      <div class="event-venue">{{ event.venue }}</div>
+      <div class="event-address">{{ event.venueAddress }}</div>
+      <div class ="map">
+        <iframe
+          width="350"
+          height="350"
+          frameborder="0" style="border:0"
+          ng-src="{{mapUrl}}" allowfullscreen>
+        </iframe>
+      </div>
+    </div>
   </div>
 </div>
