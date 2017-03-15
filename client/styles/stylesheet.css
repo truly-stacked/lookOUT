@@ -101,6 +101,11 @@ body {
 .thumbnail {
     padding:0;
 }
+
+.card-image {
+  height: 200px !important;
+}
+
 .cardName {
   height:50px;
   text-overflow: ellipsis;
