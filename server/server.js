@@ -143,28 +143,36 @@ app.get('/filtered', (req, res) => {
 
 
   let ip = '172.56.36.2' || req.header('x-forwarded-for') || req.connection.remoteAddress; // Only works on mobile
-  let searchCat = 103 || req.query.cat; // temp placehold for Family & Education
+  let searchCat = req.query.category; // temp placehold for Family & Education
   let searchLong = -73.9712 || req.query.long;
   let searchLat = 40.7831 || req.query.lat;
   let searchDate = 'today' || req.query.date;
   let searchPrice = 'free';
   let eventsObj = [];
   let eventObj = {};
+  let locationSearch = req.query.address;
 
-  satelize.satelize({ip:ip}, function (err, data) {
-    if (err) {
-      console.log('Fail');
-    } else {
-	  if(data.ip.length > 3) {
-        searchLat = data.latitude;
-	    searchLong = data.longitude;
-	  }
-	  console.log(data.longitude, data.latitude);
-	  // console.log('===>', Geolocation.getCurrentPosition());
-    }
-  });
 
-  	console.log(searchLat, searchLong);
+//(MVP ++ functionality to interpret address based on IP)
+  // satelize.satelize({ip:ip}, function (err, data) {
+  //   if (err) {
+  //     console.log('Fail');
+  //   } else {
+	 //  if(data.ip.length > 3) {
+  //       searchLat = data.latitude;
+	 //    searchLong = data.longitude;
+	 //  }
+	 //  console.log(data.longitude, data.latitude);
+	 //  // console.log('===>', Geolocation.getCurrentPosition());
+  //   }
+  // });
+
+geocoder.geocode(locationSearch)
+  .then(function(res) {
+  	searchLat = res[0].latitude;
+    searchLong = res[0].longitude;
+  }).then(function(){
+
     request('https://www.eventbriteapi.com/v3/events/search/?token='+keys.oAuthKey
       +'&location.latitude='+searchLat
       +'&location.longitude='+searchLong
@@ -193,18 +201,23 @@ app.get('/filtered', (req, res) => {
      	      eventObj.long = nullChecker(event,['venue','longitude']);
      	      eventObj.distance = (0.621371*(compare(searchLat, searchLong, eventObj.lat, eventObj.long))).toFixed(2) + ' mi';
   
-     	      cloneObj = JSON.parse(JSON.stringify(eventObj));
-     	      eventsObj.push(cloneObj);
+
+     	      //cleans object
+   	          if(Object.values(eventObj).indexOf('TBD') > -1){
+   	          	console.log('Not included, has TBD');
+   	          } else {
+   	          	cloneObj = JSON.parse(JSON.stringify(eventObj));
+   	          	eventsObj.push(cloneObj);
+   	          }  
           });
-            //console.log(eventsObj);
           res.json(eventsObj);
-        }
       }
-    );
+    });
+  });
 });
 
 
-
+// not being used at the moment.
 app.get('/event', (req, res) => {
 
   let searchLong = -73.9712 || req.query.long;
