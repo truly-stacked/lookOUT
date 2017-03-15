@@ -210,8 +210,8 @@ geocoder.geocode(locationSearch)
   			  console.log(eventObj.shortD);
      	      //cleans object
    	       let isTBD = Object.keys(eventObj).map((key) => {
-           return eventObj[key];
-         }).indexOf('TBD') > 1;
+             return eventObj[key];
+           }).indexOf('TBD') > 1;
 
          if(!isTBD) {
            cloneObj = JSON.parse(JSON.stringify(eventObj));
