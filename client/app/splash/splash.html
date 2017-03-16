@@ -1,1 +1,95 @@
-<h1 class="jumbotron">Splash</h1>
+<nav ng-controller="splashCtrl" class="navbar navbar-fixed-top navbar-default" role="navigation">
+  <div class="navbar-header">
+    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1"> <span class="sr-only">Toggle navigation</span> <span class="icon-bar"></span> <span class="icon-bar"></span> <span class="icon-bar"></span> </button>
+    <a class="navbar-brand" href="/#!/splash">l<i class="fa fa-eye"></i><i class="fa fa-eye"></i>kOUT</a> </div>
+  <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+  </div>
+</nav>
+
+<div class="container-fluid">
+  <div class="row splashPageImg">
+    <div class='splashSearch'>
+      <div class="container" style="margin-top: 8%;">
+        <div class="col-md-6 col-md-offset-3">
+          <div class="row">
+            <div id="logo" class="text-center">
+            <h1 class ='searchHeader'>l<i class="fa fa-eye"></i><i class="fa fa-eye"></i>kOUT</h1><p class='searchSubHeader'>Free things near you!</p>
+            </div>
+              <form role="form" id="form-buscar" ng-submit="getEvents(location)">
+                <div class="form-group">
+                  <div class="input-group">
+                    <input id="1" class="form-control" ng-model="location" type="text" name="search" placeholder="Add your location..." required/>
+                    <span class="input-group-btn">
+                      <button class="btn btn-success" type="submit">
+                        <i class="glyphicon glyphicon-search" aria-hidden="true"></i> Search
+                      </button>
+                    </span>
+                  </div>
+                </div>
+              </form>
+            </div>
+          </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<div class="container-fluid">
+  <div class="catBlurb">
+    <h2>Check out one of these awesome categories!</h2>
+  </div>
+  <div class="catButtons">
+    <button class="btn" ng-click="getFilteredEvents(109)">Travel</button>
+    <button class="btn" ng-click="getFilteredEvents(103)">Music</button>
+    <button class="btn" ng-click="getFilteredEvents(110)">Food & Drink</button>
+    <button class="btn" ng-click="getFilteredEvents(102)">Tech</button>
+    <button class="btn" ng-click="getFilteredEvents(104)">Film & Media</button>
+  </div>
+  <div class="row aboutUs">
+    <div class='aboutUsHeader'>Development Team</div>
+    <div class='Developer col-sm-3'>
+      <img class ='profilePicture img-circle' src='https://avatars3.githubusercontent.com/u/22504731?v=3&s=460'>
+      <h4>JP Marra</h4>
+      <p>Product Owner</p>
+      <p>Software Engineer</p>
+      <p class='contacts'>
+        <a href='https://github.com/jpmarra'><img class='gitIcon' src='https://image.flaticon.com/icons/svg/23/23957.svg'></a>
+        <a href='https://www.linkedin.com/in/jpmarra/' ><img class='linkedIcon' src='https://cdn3.iconfinder.com/data/icons/free-social-icons/67/linkedin_circle_color-512.png'></a>
+      </p>
+    </div>
+
+    <div class='Developer col-sm-3'>
+      <img class ='profilePicture img-circle' src='https://avatars3.githubusercontent.com/u/21135305?v=3&s=460'>
+      <h4>Jarett Engdahl</h4>
+      <p>Software Engineer</p>
+      <p class='contacts'>
+        <a href='https://github.com/JEngdahl'><img class='gitIcon' src='https://image.flaticon.com/icons/svg/23/23957.svg'></a>
+        <a href='https://www.linkedin.com/in/jengdahl-software/'><img class='linkedIcon' src='https://cdn3.iconfinder.com/data/icons/free-social-icons/67/linkedin_circle_color-512.png'></a>
+      </p>
+    </div>
+
+    <div class='Developer col-sm-3'>
+      <img class ='profilePicture img-circle' src='https://avatars0.githubusercontent.com/u/25232894?v=3&s=460'>
+      <h4>Kyle Greene</h4>
+      <p>Software Engineer</p>
+      <p class='contacts'>
+        <a href='https://github.com/kylegreenee' ><img class='gitIcon' src='https://image.flaticon.com/icons/svg/23/23957.svg'></a>
+        <a href='https://www.linkedin.com/in/kylesheagreene/'><img class='linkedIcon' src='https://cdn3.iconfinder.com/data/icons/free-social-icons/67/linkedin_circle_color-512.png'></a>
+      </p>
+    </div>
+
+    <div class='Developer col-sm-3'>
+      <img class ='profilePicture img-circle' src='https://avatars0.githubusercontent.com/u/24907731?v=3&s=460'>
+      <h4>Michael Chan</h4>
+      <p>Scrum Master</p>
+      <p>Software Engineer</p>
+      <p class='contacts'>
+        <a href='https://github.com/ThinkFWD' class='gitIcon'><img class='gitIcon' src='https://image.flaticon.com/icons/svg/23/23957.svg'></a>
+        <a href='https://www.linkedin.com/in/mikethikfwd/'><img class='linkedIcon' src='https://cdn3.iconfinder.com/data/icons/free-social-icons/67/linkedin_circle_color-512.png'></a>
+      </p>
+
+    </div>
+    <h6 class='copyright'>© 2017 lookOUT All rights reserved.</h6>
+  </div>
+</div>

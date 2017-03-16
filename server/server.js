@@ -1,11 +1,6 @@
-const express = require('express');
-const morgan = require ('morgan');
-const bodyParser = require('body-parser');
+const app = require('./utils.js'),
+  keys = require('../config/keys.js'),
+  port = process.env.port||8888;
 
-const app = express();
-
-app.use(morgan('dev'));
-app.use(bodyParser.json());
-app.use(express.static('./client'));
-
-app.listen(8888);
+app.createApp().listen(port);
+console.log('Server is now listening to port ' + port);
