@@ -1,7 +1,7 @@
 body {
   background-color: #FFFFFF;
   color: #342638;
-  font-family: 'Libre Franklin', sans-serif;
+  font-family: 'Lato', sans-serif;
   height: 100%;
 }
 .align {
@@ -131,13 +131,26 @@ body {
     width: 100vw;
     height: 55vh;
     background-position: center;
-    background-image: url('../assets/jacob-repko-64098.jpg');
+    background-image: url('../assets/crowd2.jpg');
     background-size: cover;
 }
+
 .navbar {
   margin-bottom: 0px;
 }
 
+.searchHeader {
+  font-size: 4em;
+  text-shadow: 1px 1px 1px #7D5C87;
+}
+
+.searchSubHeader {
+  color: #FFFFFF;
+  font-size: 1.5em;
+  margin-bottom: 2%;
+  margin-top: 3%;
+  text-shadow: 1px 1px 1px #7D5C87;
+}
 .splashSearch {
   height:10px;
 }
