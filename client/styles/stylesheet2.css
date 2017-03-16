@@ -67,7 +67,7 @@ width:100%;
 .aboutUs{}
 
 .profilePicture {
-  width:75px;
+  width:100px;
   height:auto;
 }
 .img-circle {
@@ -92,18 +92,21 @@ width:100%;
   font-size: 25px;
 }
 .catButtons {
-  padding-top: 15px;
-  padding-bottom: 25px;
+  padding-top: 7vh;
+  padding-bottom: 17vh;
   text-align: center;
   border-bottom: 2px solid #90589A;
 }
 .catButtons .btn {
-  font-size: 19px;
+  font-size: 27px;
   color: white;
   background-color: #90589A;
-  margin-right: 15px;
+  margin-right: 5vw;
   border: 2px solid;
   border-radius: 25px !important;
+}
+.catButtons .lastBtn {
+  margin-right: 0px;
 }
 .Developer {
   text-align: center;
@@ -122,7 +125,25 @@ width:100%;
 }
 .catBlurb {
   text-align: center;
+  padding-top: 4vh;
+
+}
+.copyrightText {
+  margin:0px;
+  padding-top:15px;
+  padding-bottom: 15px;
+  font-size: 15px;
+  text-align: center;
+  background-color:#90589A;
+  color: black;
 }
 .copyright {
-  text-align: center;
+  width: 100vw;
+}
+.githubLink {
+  color:white;
+}
+.splashHr {
+  margin-top: 6vh;
+  width:75vw;
 }
