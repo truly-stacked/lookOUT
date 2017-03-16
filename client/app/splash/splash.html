@@ -1,8 +1,7 @@
 <nav ng-controller="splashCtrl" class="navbar navbar-fixed-top navbar-default" role="navigation">
   <div class="navbar-header">
     <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1"> <span class="sr-only">Toggle navigation</span> <span class="icon-bar"></span> <span class="icon-bar"></span> <span class="icon-bar"></span> </button>
-    <a class="navbar-brand" href="/#!/splash">l<i class="glyphicon glyphicon-eye-open"></i><i class="glyphicon glyphicon-eye-open"></i>kOUT</a> </div>
-  <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+    <a class="navbar-brand" href="/#!/splash"><i class="glyphicon glyphicon-eye-open"></i> lookOUT</a> </div>  <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
   </div>
 </nav>
 
@@ -39,21 +38,22 @@
 <div class="container-fluid">
   <div class="catBlurb">
     <h2>Check out one of these awesome categories!</h2>
+    <hr class='event-hr splashHr'>
   </div>
   <div class="catButtons">
     <button class="btn" ng-click="getFilteredEvents(109)">Travel</button>
     <button class="btn" ng-click="getFilteredEvents(103)">Music</button>
     <button class="btn" ng-click="getFilteredEvents(110)">Food & Drink</button>
     <button class="btn" ng-click="getFilteredEvents(102)">Tech</button>
-    <button class="btn" ng-click="getFilteredEvents(104)">Film & Media</button>
+    <button class="btn lastBtn" ng-click="getFilteredEvents(104)">Film & Media</button>
   </div>
   <div class="row aboutUs">
     <div class='aboutUsHeader'>Development Team</div>
     <div class='Developer col-sm-3'>
       <img class ='profilePicture img-circle' src='https://avatars3.githubusercontent.com/u/22504731?v=3&s=460'>
       <h4>JP Marra</h4>
-      <p>Product Owner</p>
-      <p>Software Engineer</p>
+      <h5>Product Owner</h5>
+      <h5>Software Engineer</h5>
       <p class='contacts'>
         <a href='https://github.com/jpmarra'><img class='gitIcon' src='https://image.flaticon.com/icons/svg/23/23957.svg'></a>
         <a href='https://www.linkedin.com/in/jpmarra/' ><img class='linkedIcon' src='https://cdn3.iconfinder.com/data/icons/free-social-icons/67/linkedin_circle_color-512.png'></a>
@@ -63,7 +63,7 @@
     <div class='Developer col-sm-3'>
       <img class ='profilePicture img-circle' src='https://avatars3.githubusercontent.com/u/21135305?v=3&s=460'>
       <h4>Jarett Engdahl</h4>
-      <p>Software Engineer</p>
+      <h5>Software Engineer</h5>
       <p class='contacts'>
         <a href='https://github.com/JEngdahl'><img class='gitIcon' src='https://image.flaticon.com/icons/svg/23/23957.svg'></a>
         <a href='https://www.linkedin.com/in/jengdahl-software/'><img class='linkedIcon' src='https://cdn3.iconfinder.com/data/icons/free-social-icons/67/linkedin_circle_color-512.png'></a>
@@ -73,7 +73,7 @@
     <div class='Developer col-sm-3'>
       <img class ='profilePicture img-circle' src='https://avatars0.githubusercontent.com/u/25232894?v=3&s=460'>
       <h4>Kyle Greene</h4>
-      <p>Software Engineer</p>
+      <h5>Software Engineer</h5>
       <p class='contacts'>
         <a href='https://github.com/kylegreenee' ><img class='gitIcon' src='https://image.flaticon.com/icons/svg/23/23957.svg'></a>
         <a href='https://www.linkedin.com/in/kylesheagreene/'><img class='linkedIcon' src='https://cdn3.iconfinder.com/data/icons/free-social-icons/67/linkedin_circle_color-512.png'></a>
@@ -83,14 +83,16 @@
     <div class='Developer col-sm-3'>
       <img class ='profilePicture img-circle' src='https://avatars0.githubusercontent.com/u/24907731?v=3&s=460'>
       <h4>Michael Chan</h4>
-      <p>Scrum Master</p>
-      <p>Software Engineer</p>
+      <h5>Scrum Master</h5>
+      <h5>Software Engineer</h5>
       <p class='contacts'>
         <a href='https://github.com/ThinkFWD' class='gitIcon'><img class='gitIcon' src='https://image.flaticon.com/icons/svg/23/23957.svg'></a>
         <a href='https://www.linkedin.com/in/mikethikfwd/'><img class='linkedIcon' src='https://cdn3.iconfinder.com/data/icons/free-social-icons/67/linkedin_circle_color-512.png'></a>
       </p>
 
     </div>
-    <h6 class='copyright'>© 2017 lookOUT All rights reserved.</h6>
   </div>
+</div>
+<div class="copyright">
+  <h6 class='copyrightText'>© 2017 lookOUT All rights reserved. | <a class='githubLink' href='https://github.com/truly-stacked/lookOUT/'>lookOut github</a></h6>
 </div>
