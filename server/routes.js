@@ -3,7 +3,9 @@ const NodeGeocoder = require('node-geocoder'),
   satelize = require('satelize'),
   keys = require('../config/keys.js'),
   compare = require('compare-lat-lon'),
-  utils = require('./utils.js');
+  utils = require('./utils.js'),
+  options = {provider: 'google', httpAdapter: 'https', formatter: null},
+  geocoder = NodeGeocoder (options);
 
 
 
@@ -21,9 +23,8 @@ let locationSearch = (req.query.location),
   locationWithin = '1mi',
   eventsObj = [],
   eventObj = {},
-  cleanedData = [],
-  options = {provider: 'google', httpAdapter: 'https', formatter: null},
-  geocoder = NodeGeocoder (options);
+  cleanedData = [];
+  
 
   geocoder.geocode(locationSearch)
     .then(function(res) {
