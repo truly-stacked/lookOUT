@@ -3,6 +3,7 @@ angular.module('lookoutApp.splash', [])
 
   $scope.getEvents = function(location) {
     dataFactory.getAll(location).then(function(results) {
+      resultsFactory.insertLocation(location);
       resultsFactory.insertResults(results);
       $location.path('/results');
     });

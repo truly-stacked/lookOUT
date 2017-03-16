@@ -161,6 +161,16 @@ body {
 
 /*Results Page================================================================*/
 
+.filters {
+  margin-top: 4%;
+  display: flex;
+  justify-content: center;
+
+}
+
+.results-buttons {
+  border: none !important;
+}
+
 .results-container {
-  margin-top: 5%;
 }

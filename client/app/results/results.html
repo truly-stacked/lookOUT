@@ -1,7 +1,7 @@
 <nav class="navbar navbar-fixed-top navbar-default" role="navigation">
   <div class="navbar-header">
     <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1"> <span class="sr-only">Toggle navigation</span> <span class="icon-bar"></span> <span class="icon-bar"></span> <span class="icon-bar"></span> </button>
-    <a class="navbar-brand" href="/#!/splash">l<i class="glyphicon glyphicon-eye-open"></i><i class="glyphicon glyphicon-eye-open"></i>kOUT</a> </div>
+    <a class="navbar-brand" href="/#!/splash"><i class="glyphicon glyphicon-eye-open"></i> lookOUT</a> </div>
   <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
     <form class="navbar-form" ng-submit="getEvents(location)" role="search">
       <div class="input-group">
@@ -13,11 +13,13 @@
     </form>
   </div>
 </nav>
-<div class="btn-group">
-  <button type="button" ng-click="getFilteredEvents(103)" class="btn btn-primary">Music</button>
-  <button type="button" ng-click="getFilteredEvents(102)" class="btn btn-primary">Tech</button>
-  <button type="button" ng-click="getFilteredEvents(110)" class="btn btn-primary">Food & Drink</button>
-  <button type="button" ng-click="getFilteredEvents(104)" class="btn btn-primary">Film & Media</button>
+<div class="filters">
+  <div class="results-buttons catButtons btn-group">
+    <button type="button" ng-click="getFilteredEvents(103)" class="btn btn-lg">Music</button>
+    <button type="button" ng-click="getFilteredEvents(102)" class="btn btn-lg">Tech</button>
+    <button type="button" ng-click="getFilteredEvents(110)" class="btn btn-lg">Food & Drink</button>
+    <button type="button" ng-click="getFilteredEvents(104)" class="btn btn-lg">Film & Media</button>
+  </div>
 </div>
 
 <div class="results-container">
