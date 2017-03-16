@@ -1,5 +1,5 @@
 angular.module('lookoutApp.results', [])
-.controller('resultsCtrl', function($scope, $location, resultsFactory, dataFactory, eventFactory) {
+.controller('resultsCtrl', function($scope, $window, $location, resultsFactory, dataFactory, eventFactory) {
   $scope.getEvents = function(location){
     $scope.location = location;
     dataFactory.getAll(location).then(function(results){
