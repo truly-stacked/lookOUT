@@ -1,7 +1,6 @@
 const NodeGeocoder = require('node-geocoder'),
   request = require ('request'),
   satelize = require('satelize'),
-  keys = require('../config/keys.js'),
   compare = require('compare-lat-lon'),
   utils = require('./utils.js'),
   options = {provider: 'google', httpAdapter: 'https', formatter: null},
