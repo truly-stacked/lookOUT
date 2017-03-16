@@ -91,6 +91,35 @@ width:100%;
   color: #90589A;
   font-size: 25px;
 }
+.catButtons {
+  padding-top: 15px;
+  padding-bottom: 25px;
+  text-align: center;
+  border-bottom: 2px solid #90589A;
+}
+.catButtons .btn {
+  font-size: 19px;
+  color: white;
+  background-color: #90589A;
+  margin-right: 15px;
+  border: 2px solid;
+  border-radius: 25px !important;
+}
 .Developer {
+  text-align: center;
+}
+.gitIcon{
+  width:20px;
+}
+.linkedIcon {
+  width:23px;
+}
+.aboutUsHeader {
+  text-align: center;
+  font-size: 25px;
+  /*color:#90589A;*/
+  margin:15px 0;
+}
+.catBlurb {
   text-align: center;
 }
