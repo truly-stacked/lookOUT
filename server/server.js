@@ -1,5 +1,4 @@
-const keys = require('../config/keys.js'),
-  express = require('express'),
+const  express = require('express'),
   morgan = require ('morgan'),
   bodyParser = require('body-parser');
 
