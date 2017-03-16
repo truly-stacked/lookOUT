@@ -13,7 +13,7 @@ const app = express();
   return app;
 };
 
-
+//null checking
 module.exports.nullChecker = function (event, arrayKeys){
   let solution = "",
     position = 0,
