@@ -204,7 +204,7 @@ geocoder.geocode(locationSearch)
      	      eventObj.lat = nullChecker(event,['venue','latitude']);
      	      eventObj.long = nullChecker(event,['venue','longitude']);
      	      eventObj.distance = (0.621371*(compare(searchLat, searchLong, eventObj.lat, eventObj.long))).toFixed(2) + ' mi';
-  			  eventObj.shortD = (eventObj.description.length < 60) ? nullChecker(event,['description','text']).slice(0,60) : nullChecker(event,['description','text']).slice(0,60)+"..";
+  			  eventObj.shortName = (eventObj.name.length < 80) ? nullChecker(event,['name','text']).slice(0,80) : nullChecker(event,['name','text']).slice(0,80)+"..";
 
   			  console.log(eventObj.shortD);
      	      //cleans object
