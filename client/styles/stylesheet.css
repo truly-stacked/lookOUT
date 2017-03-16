@@ -11,6 +11,9 @@ body {
 }
 
 /*NAVBAR======================================================================*/
+.navbar-default {
+  box-shadow: 2px 0px 20px #2d1c31;
+}
 .navbar-form .input-group {
   display: table;
 }
