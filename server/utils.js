@@ -101,12 +101,14 @@ geocoder.geocode(locationSearch)
    	     //console.log(eventObj.shortD);
 
    	      //cleans object
-   	      if(Object.values(eventObj).indexOf('TBD') > -1){
-   	      	//console.log('Not included, has TBD');
-   	      } else {
-   	      	cloneObj = JSON.parse(JSON.stringify(eventObj));
-   	      	eventsObj.push(cloneObj);
-   	      }  	      
+   	      let isTBD = Object.keys(eventObj).map((key) => {
+           return eventObj[key];
+         }).indexOf('TBD') > 1;
+
+        if(!isTBD) {
+           cloneObj = JSON.parse(JSON.stringify(eventObj));
+           eventsObj.push(cloneObj);
+         }
         });
           res.json(eventsObj);
       }
@@ -206,15 +208,15 @@ geocoder.geocode(locationSearch)
      	      eventObj.distance = (0.621371*(compare(searchLat, searchLong, eventObj.lat, eventObj.long))).toFixed(2) + ' mi';
   			  eventObj.shortD = (eventObj.description.length < 60) ? nullChecker(event,['description','text']).slice(0,60) : nullChecker(event,['description','text']).slice(0,60)+"..";
 
-  			  console.log(eventObj.shortD);
-     	      //cleans object
-   	          if(Object.values(eventObj).indexOf('TBD') > -1){
-   	          	console.log('Not included, has TBD');
-   	          } else {
-   	          	cloneObj = JSON.parse(JSON.stringify(eventObj));
-   	          	eventsObj.push(cloneObj);
-   	          }  
-          });
+  			 let isTBD = Object.keys(eventObj).map((key) => {
+           return eventObj[key];
+         }).indexOf('TBD') > 1;
+
+        if(!isTBD) {
+           cloneObj = JSON.parse(JSON.stringify(eventObj));
+           eventsObj.push(cloneObj);
+         }
+        });
           res.json(eventsObj);
       }
     });
