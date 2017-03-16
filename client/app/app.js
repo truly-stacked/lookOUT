@@ -99,6 +99,9 @@ angular.module('lookoutApp',[
   })
   .factory('resultsFactory', function($http) {
     var current = {}
+    current.insertLocation = function(location) {
+      current.location = location;
+    }
     current.insertResults = function(results) {
       current.results = results;
     }
