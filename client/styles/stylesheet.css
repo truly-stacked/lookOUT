@@ -14,6 +14,9 @@ body {
 .navbar-default {
   box-shadow: 2px 0px 20px #2d1c31;
 }
+.navbar-brand {
+  text-shadow: 1px 1px 1px #7D5C87;
+}
 .navbar-form .input-group {
   display: table;
 }
