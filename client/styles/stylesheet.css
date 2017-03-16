@@ -136,6 +136,7 @@ body {
     background-position: center;
     background-image: url('../assets/crowd2.jpg');
     background-size: cover;
+    box-shadow: 2px 0px 10px #2d1c31;
 }
 
 .navbar {
