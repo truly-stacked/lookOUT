@@ -24,7 +24,6 @@ let locationSearch = (req.query.location),
   eventsObj = [],
   eventObj = {},
   cleanedData = [];
-  
 
   geocoder.geocode(locationSearch)
     .then(function(res) {
@@ -155,7 +154,6 @@ app.get('/filtered', (req, res) => {
 
           // Object Constructor
           eventbriteObj.forEach( (event) => {
-            eventObj.id = nullChecker(event,['id']);
      	      eventObj.id = utils.nullChecker(event,['id']);
    	          eventObj.name = utils.nullChecker(event,['name','text']);
    	          eventObj.time = utils.nullChecker(event,['start','utc']);
