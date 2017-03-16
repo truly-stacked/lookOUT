@@ -35,7 +35,7 @@ let locationSearch = (req.query.location),
   	  +'&start_date.keyword='+searchDate
   	  +'&price='+searchPrice
   	  +'location.within='+locationWithin
-  	  +'&expand=venue,category', 
+  	  +'&expand=venue,category',
 
   	  function (err, body) {
       if(err) {
@@ -80,35 +80,6 @@ let locationSearch = (req.query.location),
 
 app.get('/filtered', (req, res) => {
 
-
-    // geolocator.config({
-    //     language: "en",
-    //     google: {
-    //         version: "3",
-    //         key: "AIzaSyDanwxT0CdlMhsj0D2Yn-t6gNZ6K3_Pjfs"
-    //     }
-    // });
-
-    // window.onload = function () {
-    //     var options = {
-    //         enableHighAccuracy: true,
-    //         timeout: 5000,
-    //         maximumWait: 10000,     // max wait time for desired accuracy
-    //         maximumAge: 0,          // disable cache
-    //         desiredAccuracy: 30,    // meters
-    //         fallbackToIP: true,     // fallback to IP if Geolocation fails or rejected
-    //         addressLookup: true,    // requires Google API key if true
-    //         timezone: true,         // requires Google API key if true
-    //         map: "map-canvas",      // interactive map element id (or options object)
-    //         staticMap: true         // map image URL (boolean or options object)
-    //     };
-    //     geolocator.locate(options, function (err, location) {
-    //         if (err) return console.log(err);
-    //         console.log(location);
-    //     });
-    // };
-
-
   //let ip = '172.56.36.2' || req.header('x-forwarded-for') || req.connection.remoteAddress; // Only works on mobile
   let searchCat = req.query.category,
     searchLong = -73.9712 || req.query.long,
@@ -118,21 +89,6 @@ app.get('/filtered', (req, res) => {
     eventsObj = [],
     eventObj = {},
     locationSearch = req.query.address;
-
-
-//(MVP ++ functionality to interpret address based on IP)
-  // satelize.satelize({ip:ip}, function (err, data) {
-  //   if (err) {
-  //     console.log('Fail');
-  //   } else {
-	 //  if(data.ip.length > 3) {
-  //       searchLat = data.latitude;
-	 //    searchLong = data.longitude;
-	 //  }
-	 //  console.log(data.longitude, data.latitude);
-	 //  // console.log('===>', Geolocation.getCurrentPosition());
-  //   }
-  // });
 
   geocoder.geocode(locationSearch)
     .then(function(res) {
@@ -145,7 +101,7 @@ app.get('/filtered', (req, res) => {
       +'&price='+searchPrice
       +'&categories='+searchCat
       +'&expand=venue,category',
-      
+
       function (err, body) {
         if(err) {
           console.log('YOU FAILED', err);
