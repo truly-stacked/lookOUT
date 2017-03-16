@@ -11,9 +11,9 @@ const keys = require('../config/keys.js');
 
 
 module.exports.createApp = function (){
-  
+
   const app = express();
-  
+
   app.use(morgan('dev'));
   app.use(bodyParser.json());
   app.use(express.static('./client'));
@@ -96,7 +96,7 @@ geocoder.geocode(locationSearch)
    	      eventObj.lat = nullChecker(event,['venue','latitude']);
    	      eventObj.long = nullChecker(event,['venue','longitude']);
    	      eventObj.distance = (0.621371*(compare(searchLat, searchLong, eventObj.lat, eventObj.long))).toFixed(2) + ' mi';
-   	      eventObj.shortD = (eventObj.description.length < 60) ? nullChecker(event,['description','text']).slice(0,60) : nullChecker(event,['description','text']).slice(0,60)+"..";
+   	      eventObj.shortName = (eventObj.name.length < 80) ? nullChecker(event,['name','text']).slice(0,80) : nullChecker(event,['name','text']).slice(0,80)+"..";
 		  //console.log('New Entry -->', eventObj.description.length, eventObj.shortD);
    	     //console.log(eventObj.shortD);
 
@@ -109,6 +109,7 @@ geocoder.geocode(locationSearch)
            cloneObj = JSON.parse(JSON.stringify(eventObj));
            eventsObj.push(cloneObj);
          }
+
         });
           res.json(eventsObj);
       }
@@ -127,19 +128,19 @@ app.get('/filtered', (req, res) => {
     //         key: "AIzaSyDanwxT0CdlMhsj0D2Yn-t6gNZ6K3_Pjfs"
     //     }
     // });
- 
+
     // window.onload = function () {
     //     var options = {
     //         enableHighAccuracy: true,
     //         timeout: 5000,
-    //         maximumWait: 10000,     // max wait time for desired accuracy 
-    //         maximumAge: 0,          // disable cache 
-    //         desiredAccuracy: 30,    // meters 
-    //         fallbackToIP: true,     // fallback to IP if Geolocation fails or rejected 
-    //         addressLookup: true,    // requires Google API key if true 
-    //         timezone: true,         // requires Google API key if true 
-    //         map: "map-canvas",      // interactive map element id (or options object) 
-    //         staticMap: true         // map image URL (boolean or options object) 
+    //         maximumWait: 10000,     // max wait time for desired accuracy
+    //         maximumAge: 0,          // disable cache
+    //         desiredAccuracy: 30,    // meters
+    //         fallbackToIP: true,     // fallback to IP if Geolocation fails or rejected
+    //         addressLookup: true,    // requires Google API key if true
+    //         timezone: true,         // requires Google API key if true
+    //         map: "map-canvas",      // interactive map element id (or options object)
+    //         staticMap: true         // map image URL (boolean or options object)
     //     };
     //     geolocator.locate(options, function (err, location) {
     //         if (err) return console.log(err);
@@ -185,13 +186,13 @@ geocoder.geocode(locationSearch)
       +'&start_date.keyword='+searchDate
       +'&price='+searchPrice
       +'&categories='+searchCat
-      +'&expand=venue,category', 
+      +'&expand=venue,category',
       function (err, body) {
         if(err) {
           console.log('YOU FAILED', err);
      	  }else{
      	    let eventbriteObj = JSON.parse(body.body).events;
-  
+
           // Object Constructor
           eventbriteObj.forEach( (event) => {
             eventObj.id = nullChecker(event,['id']);
@@ -206,7 +207,7 @@ geocoder.geocode(locationSearch)
      	      eventObj.lat = nullChecker(event,['venue','latitude']);
      	      eventObj.long = nullChecker(event,['venue','longitude']);
      	      eventObj.distance = (0.621371*(compare(searchLat, searchLong, eventObj.lat, eventObj.long))).toFixed(2) + ' mi';
-  			  eventObj.shortD = (eventObj.description.length < 60) ? nullChecker(event,['description','text']).slice(0,60) : nullChecker(event,['description','text']).slice(0,60)+"..";
+  			  eventObj.shortName = (eventObj.name.length < 80) ? nullChecker(event,['name','text']).slice(0,80) : nullChecker(event,['name','text']).slice(0,80)+"..";
 
   			 let isTBD = Object.keys(eventObj).map((key) => {
            return eventObj[key];

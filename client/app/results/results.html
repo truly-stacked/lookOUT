@@ -13,6 +13,12 @@
     </form>
   </div>
 </nav>
+<div class="btn-group">
+  <button type="button" ng-click="getFilteredEvents(103)" class="btn btn-primary">Music</button>
+  <button type="button" ng-click="getFilteredEvents(102)" class="btn btn-primary">Tech</button>
+  <button type="button" ng-click="getFilteredEvents(110)" class="btn btn-primary">Food & Drink</button>
+  <button type="button" ng-click="getFilteredEvents(104)" class="btn btn-primary">Film & Media</button>
+</div>
 
 <div class="results-container">
   <div class="container">
@@ -21,7 +27,7 @@
         <div class="thumbnail">
           <img class='card-image' src= {{result.cardImage}} alt="picture">
           <div class="caption">
-            <h4 class='cardName'>{{result.name}}</h4>
+            <h4 class='cardName'>{{result.shortName}}</h4>
             <a href="#" class="btn btn-default btn-xs pull-right" role="button">
               {{result.time | date : "h:mm a"}}
             </a>
