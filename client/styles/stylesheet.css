@@ -165,15 +165,21 @@ body {
 /*Results Page================================================================*/
 
 .filters {
-  margin-top: 4%;
+  margin-top: 5%;
   display: flex;
   justify-content: center;
-
+  padding-bottom: 5vh !important;
 }
 
-.results-buttons {
-  border: none !important;
+.results-buttons .btn {
+  font-size: 1.3em;
+  color: white;
+  background-color: #90589A;
+  margin-right: 1em;
+  border-radius: 10px !important;
+  box-shadow: 2px 2px 10px #2d1c31;
 }
 
-.results-container {
+.shadow {
+  box-shadow: 2px 2px 10px #2d1c31;
 }
