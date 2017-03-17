@@ -5,7 +5,9 @@ const NodeGeocoder = require('node-geocoder'),
   utils = require('./utils.js'),
   options = {provider: 'google', httpAdapter: 'https', formatter: null},
   geocoder = NodeGeocoder (options),
-  oAuthKey = process.env.oAuthKey;
+  config = require('../config/keys.js'),
+  oAuthKey = process.env.oAuthKey 
+  || config.oAuth;
 
 
 module.exports = function (app, express) {
@@ -133,5 +135,11 @@ app.get('/filtered', (req, res) => {
     });
   });
   });
+
+// AUTH
+
+
+
+
 
 };
