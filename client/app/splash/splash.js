@@ -7,13 +7,44 @@ angular.module('lookoutApp.splash', [])
       resultsFactory.insertResults(results);
       $location.path('/results');
     });
-  }
+  };
 
   $scope.getFilteredEvents = function(category) {
-    let location = "1216 Broadway NY, NY"
+    let location = "1216 Broadway NY, NY";
     dataFactory.getFiltered(category, location).then(function(results) {
       resultsFactory.insertResults(results);
       $location.path('/results');
-    })
-  }
+    });
+  };
+
+  $scope.getLocation = function (){
+    if (navigator.geolocation) {
+         navigator.geolocation.getCurrentPosition(this.showPosition, this.showError);
+     } else { 
+         address.innerHTML = "Woops, sorry we cannot get your location because its not supported.";
+     }
+  };
+  
+  $scope.showPosition = function(position) {
+    console.log(position.coords.latitude);
+    console.log(position.coords.longitude);
+  };
+
+  $scope.showError = function(error) {
+    switch(error.code) {
+        case error.PERMISSION_DENIED:
+            address.innerHTML = "User denied the request for Geolocation.";
+            break;
+        case error.POSITION_UNAVAILABLE:
+            address.innerHTML = "Location information is unavailable.";
+            break;
+        case error.TIMEOUT:
+            address.innerHTML = "The request to get user location timed out.";
+            break;
+        case error.UNKNOWN_ERROR:
+            address.innerHTML = "An unknown error occurred.";
+            break;
+    }
+};
+
 });
