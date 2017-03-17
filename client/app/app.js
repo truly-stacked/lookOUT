@@ -91,7 +91,7 @@ angular.module('lookoutApp',[
       const getAddress = function(lat, long) {
         return $http({
           method: 'GET',
-          url: 'http://maps.googleapis.com/maps/api/geocode/json?latlng='+lat+','+long+'&sensor=false'
+          url: 'https://maps.googleapis.com/maps/api/geocode/json?latlng='+lat+','+long+'&sensor=false'
         })
         .then(
           function(results){
