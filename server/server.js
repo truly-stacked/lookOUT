@@ -1,6 +1,14 @@
-const app = require('./utils.js');
-const port = process.env.PORT || 8888;
+const express = require ('express'),
+  port = process.env.PORT || 8888,
+  morgan = require ('morgan'),
+  bodyParser = require('body-parser');
+  app = express();
+  
+  app.use(morgan('dev'));
+  app.use(bodyParser.urlencoded({ extended: false }));
+  app.use(bodyParser.json());
+  app.use(express.static('./client'));
+  require('./routes.js')(app, express);
 
-app.createApp().listen(port);
-
+app.listen(port);
 console.log('The server is now listening on port: ' + port);

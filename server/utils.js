@@ -1,23 +1,3 @@
-const express = require('express'),
-  morgan = require ('morgan'),
-  bodyParser = require('body-parser'),
-  NodeGeocoder = require('node-geocoder');
-
-module.exports.createApp = function (){
-
-const app = express();
-
-  app.use(morgan('dev'));
-  app.use(bodyParser.urlencoded({ extended: false }));
-  app.use(bodyParser.json());
-  app.use(express.static('./client'));
-  require('./routes.js')(app, express);
-
-  return app;
-};
-
-
-
 module.exports.nullChecker = function (event, arrayKeys){
   let solution = "",
     position = 0,
