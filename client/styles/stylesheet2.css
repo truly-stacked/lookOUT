@@ -159,18 +159,31 @@ width:100%;
   width:75vw;
 }
 button.btn.btn-default.dropdown-toggle {
-  height: 8vh;
+  /*height: 8vh;
   background-color: #90589A;
   border: none;
   color: white;
-  font-size: 16px;
-}
-.dropdown-toggle:active, .open .dropdown-toggle{
+  font-size: 16px;*/
+
   height: 8vh !important;
   background-color: white !important;
   border: none !important;
   color: #90589A !important;
   font-size: 16px !important;
+  margin-right: 1vw;
+}
+.dropdown-toggle:active, .open .dropdown-toggle{
+  /*height: 8vh !important;
+  background-color: white !important;
+  border: none !important;
+  color: #90589A !important;
+  font-size: 16px !important;*/
+
+  height: 8vh;
+  background-color: #90589A;
+  border: none;
+  color: white;
+  font-size: 16px;
 }
 #stalkButton {
   border-color: #90589A;
@@ -185,4 +198,7 @@ button.btn.btn-default.dropdown-toggle {
 }
 .glyphicon-map-marker {
   color: white;
+}
+.fbLogin {
+  text-align: center;
 }
