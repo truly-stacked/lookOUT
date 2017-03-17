@@ -28,10 +28,10 @@
               <div class ='searchHeader'>What's happening today?</div>
             </div>
             <div class='searchSubHeader'>Enter your address below.</div>
-              <form role="form" id="form-buscar" ng-submit="getEvents(location)">
+              <form role="form" id="form-buscar" ng-submit="searching = true; getEvents(location)">
                 <div class="form-group">
-                  <button type="button" id='stalkButton' class="btn btn-default btn-sm pull-left" ng-click="getLocation()">
-                    <span class="glyphicon glyphicon-map-marker"></span>
+                  <button type="button" id='stalkButton' class="btn btn-default btn-sm pull-left" ng-click="locating = true; getLocation()">
+                    <i ng-class="{'fa fa-map-marker fa-2x fa-fw': !locating, 'fa fa-refresh fa-spin fa-2x fa-fw': locating }" aria-hidden="true"></i>
 
                   </button>
 
@@ -39,7 +39,7 @@
                     <input id="1" class="form-control" ng-model="location" type="text" name="search" placeholder="Where are you?" value="{{ address }}" required/>
                     <span class="input-group-btn">
                       <button class="btn btn-success" type="submit">
-                        <i class="glyphicon glyphicon-search" aria-hidden="true"></i> Search
+                        <i ng-class="{'fa fa-search': !searching, 'fa fa-refresh fa-spin': searching }" aria-hidden="true"></i> Search
                       </button>
                     </span>
                   </div>

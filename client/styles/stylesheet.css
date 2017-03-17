@@ -11,6 +11,18 @@ body {
 }
 
 /*NAVBAR======================================================================*/
+
+.input-group-btn .btn:focus {
+  outline: none;
+}
+
+.search-btn {
+  background-color: #FFFFFF !important;
+}
+
+.search-icon {
+  color: #90589A !important;
+}
 .navbar-default {
   box-shadow: 2px 0px 20px #2d1c31;
 }
@@ -180,6 +192,10 @@ body {
   box-shadow: 2px 2px 10px #2d1c31;
 }
 
+.results-buttons .btn:focus {
+  outline: none;
+}
+
 .shadow {
   box-shadow: 2px 2px 10px #2d1c31;
 }
@@ -237,5 +253,3 @@ body {
   background-color: #2d1c31;
   color:#FFFFFF;
 }
-
-.f

@@ -49,6 +49,10 @@ width:100%;
     border-radius: 10px !important;
 
 }
+
+.form-group .btn:focus {
+  outline: none;
+}
 /*#form-buscar >.form-group >.input-group > .form-control :focus {
     box-shadow: 6px 6px 10px #2d1c31;
 }*/
@@ -115,6 +119,10 @@ width:100%;
   border: 2px solid #90589A;
   border-radius: 10px !important;
   box-shadow: 2px 2px 10px #2d1c31;
+}
+
+.catButtons .btn:focus {
+  outline: none;
 }
 .catButtons .lastBtn {
   margin-right: 0px;
@@ -196,9 +204,17 @@ button.btn.btn-default.dropdown-toggle {
     border: 2px solid #90589A;
     border-radius: 10px !important;
 }
-.glyphicon-map-marker {
-  color: white;
+.fa-map-marker {
+  margin-top: -3px;
+  color: #FFFFFF;
 }
+
+.fa-refresh {
+  margin-top: -3px;
+  color: #FFFFFF;
+}
+
+
 .fbLogin {
   text-align: center;
 }
