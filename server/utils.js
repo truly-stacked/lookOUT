@@ -8,7 +8,9 @@ const express = require('express'),
 module.exports.createApp = function (){
 
 const app = express(),
+
   database = process.env.mongodbUrl;
+  console.log(database)
 
 // initial setup of application
   app.use(morgan('dev'));
