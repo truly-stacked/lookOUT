@@ -6,7 +6,7 @@ const NodeGeocoder = require('node-geocoder'),
   options = {provider: 'google', httpAdapter: 'https', formatter: null},
   geocoder = NodeGeocoder (options);
   
-  oAuthKey = process.env.oAuthKey
+  oAuthKey = process.env.oAuthKey;
 
 
 module.exports = function (app, express) {
