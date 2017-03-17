@@ -4,14 +4,6 @@ const mongoose = require ('mongoose');
 
 
 var UserSchema = new Schema({
-
-<<<<<<< HEAD
-	username: String,
-	phoneNumber: Number,
-	salt: String,
-	hash: String,
-	personalHabits: Object
-=======
 	name: {
 		type: String,
 		unique: true,
@@ -36,7 +28,6 @@ var UserSchema = new Schema({
 	},
 
 	personalTracking : {Object}
->>>>>>> pass
 
 });
 
@@ -47,14 +38,6 @@ var UserSchema = new Schema({
 UserSchema.pre('save', function(next){
 	var user = this;
 
-<<<<<<< HEAD
-let FacebookUserSchema = new mongoose.Schema ({
-	fbID: String, 
-	email: {type : String, lowercase:true},
-	phoneNumber: Number, 
-	name: String,
-	personalHabits: Object
-=======
 	if(this.isModified('password') || this.isNew){
 		bcrypt.genSalt(10, function(err, salt){
 			if(err){
@@ -71,7 +54,6 @@ let FacebookUserSchema = new mongoose.Schema ({
 	} else{
 		return next();
 	}
->>>>>>> pass
 });
 
 //Method to makea comparison.
