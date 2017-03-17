@@ -10,6 +10,7 @@ const app = express();
   app.use(bodyParser.json());
   app.use(express.static('./client'));
   require('./routes.js')(app, express);
+  
   return app;
 };
 
