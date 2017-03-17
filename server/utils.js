@@ -2,15 +2,15 @@
 const express = require('express'),
   morgan = require ('morgan'),
   bodyParser = require('body-parser'),
-  mongoose = require('mongoose');
-  //config = require('../config/keys.js');
+  mongoose = require('mongoose'),
+  config = require('../config/keys.js');
 
 
 module.exports.createApp = function (){
 
 const app = express(),
-  database = process.env.mongodbUrl; 
-  //|| config.mongoDb;
+  database = process.env.mongodbUrl 
+  || config.mongoDb;
 
 // initial setup of application
   app.use(morgan('dev'));
