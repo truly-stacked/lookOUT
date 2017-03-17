@@ -185,9 +185,16 @@ body {
 }
 
 /*Register Page===============================================================*/
+.btn-facebook {
+  border-radius: 5px !important;
+}
+
+.form-input {
+  border-radius: 5px !important;
+}
 
 .register-container {
-  background-color: #90589A;
+  background: radial-gradient(#FFFFFF, #90589A);
   height: 100vh;
   width: 100vw;
   display: flex;
@@ -202,10 +209,33 @@ body {
   display: flex;
   align-items: center;
   justify-content: center;
-  height: 30vh;
+  height: 50vh;
   width: 30vw;
 }
 
 .register-field {
+  width: 75%;
+}
+
+.signup {
+  display: flex;
+  justify-content: center;
+}
+
+.signup .btn {
+  background-color: #90589A;
+  border-radius: 5px !important;
+  border: none;
+  color: #FFFFFF;
+  outline: none;
+  margin-top: 5%;
 
 }
+
+.signup .btn:active {
+  outline: none;
+  background-color: #2d1c31;
+  color:#FFFFFF;
+}
+
+.f
