@@ -7,9 +7,8 @@ const NodeGeocoder = require('node-geocoder'),
   geocoder = NodeGeocoder (options),
   oAuthKey = process.env.oAuthKey;
 
+
 module.exports = function (app, express) {
-
-
 app.get('/results', (req, res) => {
 let locationSearch = (req.query.location),
   searchLong = -73.9712,
