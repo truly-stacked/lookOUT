@@ -4,16 +4,13 @@ const NodeGeocoder = require('node-geocoder'),
   compare = require('compare-lat-lon'),
   utils = require('./utils.js'),
   options = {provider: 'google', httpAdapter: 'https', formatter: null},
-  geocoder = NodeGeocoder (options);
-
-let oAuthKey = process.env.oAuthKey;
+  geocoder = NodeGeocoder (options),
+  oAuthKey = process.env.oAuthKey;
 
 module.exports = function (app, express) {
 
-//Return an object that contains all events.
 
 app.get('/results', (req, res) => {
-
 let locationSearch = (req.query.location),
   searchLong = -73.9712,
   searchLat = 40.7831,
