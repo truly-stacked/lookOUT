@@ -4,7 +4,7 @@ const NodeGeocoder = require('node-geocoder'),
   compare = require('compare-lat-lon'),
   utils = require('./utils.js'),
   options = {provider: 'google', httpAdapter: 'https', formatter: null},
-  keys = require('../config/keys.js'),
+ // keys = require('../config/keys.js'),
   geocoder = NodeGeocoder (options),
   key = process.env.oAuthKey || keys.oAuthKey;
 
