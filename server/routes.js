@@ -6,7 +6,7 @@ const NodeGeocoder = require('node-geocoder'),
   options = {provider: 'google', httpAdapter: 'https', formatter: null},
  // keys = require('../config/keys.js'),
   geocoder = NodeGeocoder (options),
-  key = process.env.oAuthKey 
+  oAuthKey = process.env.oAuthKey; 
   //|| keys.oAuthKey;
 
 
@@ -30,7 +30,7 @@ let locationSearch = (req.query.location),
     .then(function(res) {
   	  searchLat = res[0].latitude;
       searchLong = res[0].longitude;
-    }).then(function(){ request('https://www.eventbriteapi.com/v3/events/search/?token='+ key
+    }).then(function(){ request('https://www.eventbriteapi.com/v3/events/search/?token='+ oAuthKey
   	  +'&location.latitude='+searchLat
   	  +'&location.longitude='+searchLong
   	  +'&start_date.keyword='+searchDate
@@ -95,7 +95,7 @@ app.get('/filtered', (req, res) => {
     .then(function(res) {
   	  searchLat = res[0].latitude;
       searchLong = res[0].longitude;
-    }).then(function(){ request('https://www.eventbriteapi.com/v3/events/search/?token='+key
+    }).then(function(){ request('https://www.eventbriteapi.com/v3/events/search/?token='+oAuthKey
       +'&location.latitude='+searchLat
       +'&location.longitude='+searchLong
       +'&start_date.keyword='+searchDate
