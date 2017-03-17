@@ -2,6 +2,7 @@ angular.module('lookoutApp',[
   'lookoutApp.event',
   'lookoutApp.results',
   'lookoutApp.splash',
+  'lookoutApp.auth',
   'ngRoute'
 ])
   .config( function($routeProvider){
@@ -9,6 +10,10 @@ angular.module('lookoutApp',[
       .when('/', {
         templateUrl: 'app/splash/splash.html',
         controller: 'splashCtrl'
+      })
+      .when('/signup', {
+        templateUrl: 'app/auth/register.html',
+        controller: 'authCtrl'
       })
       .when('/splash', {
         templateUrl: 'app/splash/splash.html',
