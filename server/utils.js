@@ -3,7 +3,8 @@ const express = require('express'),
   morgan = require ('morgan'),
   bodyParser = require('body-parser'),
   jwt = require('jsonwebtoken'),
-  User = require('./model/userModel.js')
+  passport = require('passport'),
+  User = require('./model/userModel'),
   mongoose = require('mongoose');
 
 
@@ -18,11 +19,26 @@ const app = express(),
 // initial setup of application
   app.set('superSecret', secret);
   app.use(morgan('dev'));
+  app.use(passport.initialize());
   app.use(bodyParser.json());
   app.use(bodyParser.urlencoded({extended:false}));
   app.use(express.static('./client'));
 
+
+
+
 // Middlewares
+
+// function isLoggedIn(req,res,next){
+//
+//   if(req.isAuthenticated())
+//     return next();
+//
+//   res.redirect('/');
+//
+//
+// }
+
 
 
 // Connect to mongo DB
