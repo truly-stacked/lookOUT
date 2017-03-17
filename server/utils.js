@@ -2,7 +2,7 @@
 const express = require('express'),
   morgan = require ('morgan'),
   bodyParser = require('body-parser'),
-  mongoose = require('mongoose'),
+  mongoose = require('mongoose');
   //config = require('../config/keys.js');
 
 
@@ -32,15 +32,6 @@ mongoose.connect(database, function(err) {
 
 // Connect the routes
 require('./routes.js')(app, express);
-  
-
-
-
-
-
-
-
-
 
 return app;
 };
