@@ -3,19 +3,11 @@ const NodeGeocoder = require('node-geocoder'),
   satelize = require('satelize'),
   compare = require('compare-lat-lon'),
   utils = require('./utils.js'),
-  options = {provider: 'google', httpAdapter: 'https', formatter: null},
- 
-  geocoder = NodeGeocoder (options);
-
-<<<<<<< HEAD
-var config = require('../config/keys.js');  
-=======
-var config = require('./keys.js');  
->>>>>>> 7183fff1823b1bfa5f60fa672dcfc3c3d9eaa795
-var oAuthKey = process.env.oAuthKey || config; 
-
-
-//|| keys.oAuthKey;
+  options = {provider: 'google', httpAdapter: 'https', formatter: null}, 
+  geocoder = NodeGeocoder (options),
+  config = require('../config/keys.js'),
+  oAuthKey = process.env.oAuthKey; 
+//|| config; 
 
 
 module.exports = function (app, express) {

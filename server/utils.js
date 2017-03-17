@@ -1,26 +1,3 @@
-<<<<<<< HEAD
-=======
-const express = require('express'),
-  morgan = require ('morgan'),
-  bodyParser = require('body-parser'),
-  NodeGeocoder = require('node-geocoder');
-
-module.exports.createApp = function (){
-
-const app = express();
-
-  app.use(morgan('dev'));
-  app.use(bodyParser.urlencoded({ extended: false }));
-  app.use(bodyParser.json());
-  app.use(express.static('./client'));
-  require('./routes.js')(app, express);
-
-  return app;
-};
-
-
-
->>>>>>> 7183fff1823b1bfa5f60fa672dcfc3c3d9eaa795
 module.exports.nullChecker = function (event, arrayKeys){
   let solution = "",
     position = 0,
