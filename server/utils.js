@@ -2,9 +2,9 @@
 const express = require('express'),
   morgan = require ('morgan'),
   bodyParser = require('body-parser'),
-  jwt = require('jsonwebtoken'),
-  passport = require('passport'),
-  User = require('./model/userModel'),
+  // jwt = require('jsonwebtoken'),
+  // passport = require('passport'),
+  // User = require('./model/userModel'),
   mongoose = require('mongoose');
 
 
