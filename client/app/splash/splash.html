@@ -8,7 +8,7 @@
             Login <span class="caret"></span>
           </button>
           <ul class="dropdown-menu" role="menu">
-            <li><a href="#">Action</a></li>
+            <li><button>Facebook Login</button></li>
             <li><a href="#">Another action</a></li>
             <li><a href="#">Something else here</a></li>
             <li class="divider"></li>
@@ -29,6 +29,10 @@
             <div class='searchSubHeader'>Enter your address below.</div>
               <form role="form" id="form-buscar" ng-submit="getEvents(location)">
                 <div class="form-group">
+                  <button type="button" id='stalkButton' class="btn btn-default btn-sm pull-left">
+                    <span class="glyphicon glyphicon-map-marker"></span>
+                  </button>
+
                   <div class="input-group">
                     <input id="1" class="form-control" ng-model="location" type="text" name="search" placeholder="Where are you?" required/>
                     <span class="input-group-btn">
