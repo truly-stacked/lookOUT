@@ -1,4 +1,4 @@
-const address = document.getElementById("location");
+const address = document.getElementById("1");
 
 function stalkButton() {
     if (navigator.geolocation) {
@@ -11,6 +11,7 @@ function stalkButton() {
 function showPosition(position) {
     address.innerHTML = "Latitude: " + position.coords.latitude + 
     "<br>Longitude: " + position.coords.longitude;
+    console.log(position.coords.latitude,position.coords.longitude);
 }
 
 function showError(error) {

@@ -29,7 +29,7 @@
             <div class='searchSubHeader'>Enter your address below.</div>
               <form role="form" id="form-buscar" ng-submit="getEvents(location)">
                 <div class="form-group">
-                  <button type="button" id='stalkButton' class="btn btn-default btn-sm pull-left">
+                  <button type="button" id='stalkButton' class="btn btn-default btn-sm pull-left" onClick="stalkButton()">
                     <span class="glyphicon glyphicon-map-marker"></span>
                   </button>
 
@@ -54,6 +54,7 @@
 <div class="container-fluid">
   <div class="catBlurb">
     <h2>Check out one of these awesome categories!</h2>
+    <p id='location'></p>
     <hr class='event-hr splashHr'>
   </div>
   <div class="catButtons">
