@@ -1,3 +1,10 @@
+
+const express = require('express'),
+  morgan = require ('morgan'),
+  bodyParser = require('body-parser'),
+  NodeGeocoder = require('node-geocoder');
+
+
 module.exports.nullChecker = function (event, arrayKeys){
   let solution = "",
     position = 0,
