@@ -7,7 +7,7 @@ const NodeGeocoder = require('node-geocoder'),
  
   geocoder = NodeGeocoder (options);
 
-var config = require('../config/keys.js');  
+var config = require('./keys.js');  
 var oAuthKey = process.env.oAuthKey || config; 
 
 
