@@ -19,7 +19,7 @@ const app = express(),
 // initial setup of application
   app.set('superSecret', secret);
   app.use(morgan('dev'));
-  app.use(passport.initialize());
+  // app.use(passport.initialize());
   app.use(bodyParser.json());
   app.use(bodyParser.urlencoded({extended:false}));
   app.use(express.static('./client'));
