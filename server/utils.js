@@ -2,19 +2,24 @@
 const express = require('express'),
   morgan = require ('morgan'),
   bodyParser = require('body-parser'),
+  jwt = require('jsonwebtoken'),
+  User = require('./model/userModel.js')
   mongoose = require('mongoose');
 
 
 module.exports.createApp = function (){
 
-const app = express(),
 
+const app = express(),
+  secret = process.env.secret;
   database = process.env.mongodbUrl;
   console.log(database)
 
 // initial setup of application
+  app.set('superSecret', secret);
   app.use(morgan('dev'));
   app.use(bodyParser.json());
+  app.use(bodyParser.urlencoded({extended:false}));
   app.use(express.static('./client'));
 
 // Middlewares

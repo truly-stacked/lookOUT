@@ -5,11 +5,39 @@ const NodeGeocoder = require('node-geocoder'),
   utils = require('./utils.js'),
   options = {provider: 'google', httpAdapter: 'https', formatter: null},
   geocoder = NodeGeocoder (options);
-  
+
   oAuthKey = process.env.oAuthKey
 
 
 module.exports = function (app, express) {
+
+app.get("/")
+
+
+
+app.get('/set', function(req,res){
+
+
+  var kyle = new Users({
+    name: 'Kyle Greene',
+    password: 'noway'
+  });
+
+  kyle.save(function(err){
+    if (err) throw err;
+
+    console.log('User saved');
+    res.json({success: true});
+
+  });
+});
+
+
+
+
+
+
+
 app.get('/results', (req, res) => {
 let locationSearch = (req.query.location),
   searchLong = -73.9712,
