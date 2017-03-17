@@ -10,7 +10,7 @@ angular.module('lookoutApp.splash', [])
   };
 
   $scope.getFilteredEvents = function(category) {
-    let location = "1216 Broadway NY, NY";
+    let location = $scope.address || "1216 Broadway NY, NY";
     dataFactory.getFiltered(category, location).then(function(results) {
       resultsFactory.insertResults(results);
       $location.path('/results');
@@ -20,15 +20,21 @@ angular.module('lookoutApp.splash', [])
   $scope.getLocation = function (){
     if (navigator.geolocation) {
          navigator.geolocation.getCurrentPosition(this.showPosition, this.showError);
-     } else { 
+     } else {
          address.innerHTML = "Woops, sorry we cannot get your location because its not supported.";
      }
   };
-  
+
   $scope.showPosition = function(position) {
-    console.log(position.coords.latitude);
-    console.log(position.coords.longitude);
-    console.log(typeof 'http://maps.googleapis.com/maps/api/geocode/json?latlng=37.76893497,-122.42284884&sensor=false');
+    dataFactory.getAddress(position.coords.latitude, position.coords.longitude).then(function(results) {
+      $scope.address = results.data.results[0].formatted_address;
+      $scope.getEvents($scope.address);
+      console.log($scope.address);
+    })
+    // console.log(position);
+    // console.log(position.coords.latitude);
+    // console.log(position.coords.longitude);
+    // console.log(typeof 'http://maps.googleapis.com/maps/api/geocode/json?latlng=37.76893497,-122.42284884&sensor=false');
   };
 
   $scope.showError = function(error) {
@@ -49,4 +55,3 @@ angular.module('lookoutApp.splash', [])
 };
 
 });
-
