@@ -16,11 +16,11 @@ const NodeGeocoder = require('node-geocoder'),
 
   apiroutes.post('/signup', function(req,res){
     console.log("Im in this.")
-    if(!req.body.name || !req.body.password){
+    if(!req.body.username || !req.body.password){
       res.json({success: false, msg: 'Please give and name and password'});
     }else{
       var newUser = new User({
-        name: req.body.name,
+        name: req.body.username,
         password: req.body.password
       });
 
@@ -33,9 +33,9 @@ const NodeGeocoder = require('node-geocoder'),
     }
   });
 
-  apiroutes.post('/authenticate', function(req,res){
+  apiroutes.post('/signin', function(req,res){
     User.findOne({
-      name: req.body.name
+      name: req.body.username
     }, function(err,user){
       if (err) throw err;
 
@@ -54,39 +54,39 @@ const NodeGeocoder = require('node-geocoder'),
     });
   });
 
-  apiroutes.get('/memberinfo', passport.authenticate('jwt', {session:false}), function(req,res){
-    var token = getToken(req.headers);
-    if(token){
-      var decoded = jwt.decode(token, config.secret);
-      User.findOne({
-        name:decoded.name
-      }, function(err,user){
-        if (err) throw err;
+  // apiroutes.get('/', passport.authenticate('jwt', {session:false}), function(req,res){
+  //   var token = getToken(req.headers);
+  //   if(token){
+  //     var decoded = jwt.decode(token, config.secret);
+  //     User.findOne({
+  //       name:decoded.name
+  //     }, function(err,user){
+  //       if (err) throw err;
+  //
+  //       if(!user){
+  //         return res.status(403).send({success:false, msg: 'User not found.'});
+  //       } else{
+  //         res.json({success: true, msg: 'Welcome!'});
+  //       }
+  //     });
+  //   }else{
+  //     return res.status(403).send({success:false, msg: 'No token!'});
+  //   }
+  // });
 
-        if(!user){
-          return res.status(403).send({success:false, msg: 'User not found.'});
-        } else{
-          res.json({success: true, msg: 'Welcome!'});
-        }
-      });
-    }else{
-      return res.status(403).send({success:false, msg: 'No token!'});
-    }
-  });
 
-
-  getToken = function(headers){
-    if(headers && headers.authorization){
-      var parted = headers.authorization.split(' ');
-      if(parted.length === 2){
-        return parted[1]
-      }else{
-        return null;
-      }
-    }else{
-      return null;
-    }
-  };
+  // getToken = function(headers){
+  //   if(headers && headers.authorization){
+  //     var parted = headers.authorization.split(' ');
+  //     if(parted.length === 2){
+  //       return parted[1]
+  //     }else{
+  //       return null;
+  //     }
+  //   }else{
+  //     return null;
+  //   }
+  // };
 
 
 
@@ -223,7 +223,7 @@ app.get('/filtered', (req, res) => {
 // AUTH
 
 
-
+app.use('/api', apiRoutes);
 
 
 };
