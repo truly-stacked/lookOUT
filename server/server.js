@@ -1,5 +1,3 @@
-'use strict';
-
 const app = require('./utils.js');
 const port = process.env.PORT || 8888;
 
