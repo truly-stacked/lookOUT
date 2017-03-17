@@ -9,5 +9,6 @@ const express = require ('express'),
   require('./routes.js')(app, express);
  
 const port = process.env.PORT || 8888;
+
 app.listen(port);
 console.log('The server is now listening on port: ' + port);

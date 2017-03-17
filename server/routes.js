@@ -4,9 +4,11 @@ const NodeGeocoder = require('node-geocoder'),
   compare = require('compare-lat-lon'),
   utils = require('./utils.js'),
   options = {provider: 'google', httpAdapter: 'https', formatter: null}, 
-  geocoder = NodeGeocoder (options),
-  oAuthKey = process.env.oAuthKey; 
-  
+  geocoder = NodeGeocoder (options);
+ 
+
+ let oAuthKey = process.env.oAuthKey; 
+
  // config = require('../config/keys.js'),
  //|| config; 
 
@@ -31,7 +33,7 @@ let locationSearch = (req.query.location),
     .then(function(res) {
   	  searchLat = res[0].latitude;
       searchLong = res[0].longitude;
-    }).then(function(){ request('https://www.eventbriteapi.com/v3/events/search/?token='+ oAuthKey
+    }).then(function(){ request('https://www.eventbriteapi.com/v3/events/search/?token='+oAuthKey
   	  +'&location.latitude='+searchLat
   	  +'&location.longitude='+searchLong
   	  +'&start_date.keyword='+searchDate
