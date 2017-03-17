@@ -1,6 +1,5 @@
 
-const app = require('./utils.js'),
-  port = process.env.PORT||8888;
+const app = require('./utils.js');
 
-app.createApp().listen(port);
+app.createApp().listen(process.env.PORT || 8888);
 console.log('Server is now listening to port ' + port);
