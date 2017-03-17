@@ -2,6 +2,7 @@ angular.module('lookoutApp',[
   'lookoutApp.event',
   'lookoutApp.results',
   'lookoutApp.splash',
+  'lookoutApp.auth',
   'ngRoute'
 ])
   .config( function($routeProvider){
@@ -9,6 +10,10 @@ angular.module('lookoutApp',[
       .when('/', {
         templateUrl: 'app/splash/splash.html',
         controller: 'splashCtrl'
+      })
+      .when('/signup', {
+        templateUrl: 'app/auth/register.html',
+        controller: 'authCtrl'
       })
       .when('/splash', {
         templateUrl: 'app/splash/splash.html',
@@ -83,10 +88,27 @@ angular.module('lookoutApp',[
           });
       }
 
+      const getAddress = function(lat, long) {
+        return $http({
+          method: 'GET',
+          url: 'http://maps.googleapis.com/maps/api/geocode/json?latlng='+lat+','+long+'&sensor=false'
+        })
+        .then(
+          function(results){
+            return results;
+          })
+          .catch(
+            function(err) {
+              console.log('There was an error');
+              console.error(err);
+            });
+      }
+
       return {
         getAll : getAll,
         getFiltered : getFiltered,
-        getEvent : getEvent
+        getEvent : getEvent,
+        getAddress : getAddress
     }
   })
   .factory('eventFactory', function($http) {
