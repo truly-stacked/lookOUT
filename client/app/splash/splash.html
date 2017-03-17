@@ -8,7 +8,7 @@
             Login <span class="caret"></span>
           </button>
           <ul class="dropdown-menu" role="menu">
-            <li><button>Facebook Login</button></li>
+            <li class='fbLogin'><button >Facebook Login</button></li>
             <li><a href="#">Another action</a></li>
             <li><a href="#">Something else here</a></li>
             <li class="divider"></li>
@@ -16,6 +16,23 @@
           </ul>
     </div>
 </nav>
+
+
+<script>
+
+function getLocation() {
+    if (navigator.geolocation) {
+        navigator.geolocation.watchPosition(showPosition);
+    } else {
+        console.log("Geolocation is not supported by this browser.");}
+    }
+
+function showPosition(position) {
+    console.log("Latitude: " + position.coords.latitude )
+    console.log("Longitude: " + position.coords.longitude);
+}
+</script>
+
 
 <div class="container-fluid">
   <div class="row splashPageImg">
@@ -29,8 +46,9 @@
             <div class='searchSubHeader'>Enter your address below.</div>
               <form role="form" id="form-buscar" ng-submit="getEvents(location)">
                 <div class="form-group">
-                  <button type="button" id='stalkButton' class="btn btn-default btn-sm pull-left">
+                  <button type="button" id='stalkButton' class="btn btn-default btn-sm pull-left" onclick="getLocation()">
                     <span class="glyphicon glyphicon-map-marker"></span>
+
                   </button>
 
                   <div class="input-group">
