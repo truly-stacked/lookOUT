@@ -4,9 +4,10 @@ const NodeGeocoder = require('node-geocoder'),
   compare = require('compare-lat-lon'),
   utils = require('./utils.js'),
   options = {provider: 'google', httpAdapter: 'https', formatter: null},
-  geocoder = NodeGeocoder (options);
+  keys = require('../config/keys.js'),
+  geocoder = NodeGeocoder (options),
+  key = process.env.oAuthKey || keys.oAuthKey;
 
-let oAuthKey = process.env.oAuthKey;
 
 module.exports = function (app, express) {
 
@@ -28,7 +29,7 @@ let locationSearch = (req.query.location),
     .then(function(res) {
   	  searchLat = res[0].latitude;
       searchLong = res[0].longitude;
-    }).then(function(){ request('https://www.eventbriteapi.com/v3/events/search/?token='+ oAuthKey
+    }).then(function(){ request('https://www.eventbriteapi.com/v3/events/search/?token='+ key
   	  +'&location.latitude='+searchLat
   	  +'&location.longitude='+searchLong
   	  +'&start_date.keyword='+searchDate
@@ -93,7 +94,7 @@ app.get('/filtered', (req, res) => {
     .then(function(res) {
   	  searchLat = res[0].latitude;
       searchLong = res[0].longitude;
-    }).then(function(){ request('https://www.eventbriteapi.com/v3/events/search/?token='+oAuthKey
+    }).then(function(){ request('https://www.eventbriteapi.com/v3/events/search/?token='+key
       +'&location.latitude='+searchLat
       +'&location.longitude='+searchLong
       +'&start_date.keyword='+searchDate
