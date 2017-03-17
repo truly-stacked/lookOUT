@@ -88,10 +88,27 @@ angular.module('lookoutApp',[
           });
       }
 
+      const getAddress = function(lat, long) {
+        return $http({
+          method: 'GET',
+          url: 'http://maps.googleapis.com/maps/api/geocode/json?latlng='+lat+','+long+'&sensor=false'
+        })
+        .then(
+          function(results){
+            return results;
+          })
+          .catch(
+            function(err) {
+              console.log('There was an error');
+              console.error(err);
+            });
+      }
+
       return {
         getAll : getAll,
         getFiltered : getFiltered,
-        getEvent : getEvent
+        getEvent : getEvent,
+        getAddress : getAddress
     }
   })
   .factory('eventFactory', function($http) {
