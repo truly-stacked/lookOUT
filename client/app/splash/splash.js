@@ -28,6 +28,7 @@ angular.module('lookoutApp.splash', [])
   $scope.showPosition = function(position) {
     console.log(position.coords.latitude);
     console.log(position.coords.longitude);
+    console.log(typeof 'http://maps.googleapis.com/maps/api/geocode/json?latlng=37.76893497,-122.42284884&sensor=false');
   };
 
   $scope.showError = function(error) {
@@ -48,3 +49,4 @@ angular.module('lookoutApp.splash', [])
 };
 
 });
+
