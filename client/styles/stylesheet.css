@@ -120,6 +120,15 @@ body {
   margin-top: 5%;
   box-shadow: 3px 3px 15px #2d1c31;
 }
+
+@media only screen
+  and (min-device-width: 375px)
+  and (max-device-width: 667px)
+  and (-webkit-min-device-pixel-ratio: 2) {
+    .event-container {
+      margin-top: 10%;
+    }
+  }
 /*CARD WORK===================================================================*/
 
 .resultsCard {
@@ -258,6 +267,18 @@ body {
   box-shadow: 2px 2px 10px #2d1c31;
 }
 
+@media only screen
+  and (min-device-width: 375px)
+  and (max-device-width: 667px)
+  and (-webkit-min-device-pixel-ratio: 2) {
+    .filters {
+      display: none;
+    }
+    .results-container {
+      margin-top: 6%;
+    }
+  }
+
 /*Register Page===============================================================*/
 .btn-facebook {
   border-radius: 5px !important;
@@ -311,15 +332,6 @@ body {
   background-color: #2d1c31;
   color:#FFFFFF;
 }
-
-@media only screen
-  and (min-device-width: 375px)
-  and (max-device-width: 667px)
-  and (-webkit-min-device-pixel-ratio: 2) {
-    .filters {
-      display: none;
-    }
-  }
 
 
 /* PULSE */
