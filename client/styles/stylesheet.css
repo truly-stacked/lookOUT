@@ -11,6 +11,18 @@ body {
 }
 
 /*NAVBAR======================================================================*/
+
+.input-group-btn .btn:focus {
+  outline: none;
+}
+
+.search-btn {
+  background-color: #FFFFFF !important;
+}
+
+.search-icon {
+  color: #90589A !important;
+}
 .navbar-default {
   box-shadow: 2px 0px 20px #2d1c31;
 }
@@ -132,10 +144,9 @@ body {
   color: #FFFFFF;
 }
 /*Splash Page===================================================================*/
-
 .splashPageImg {
     width: 100vw;
-    height: 55vh;
+    height: 60vh;
     background-position: center;
     background-image: url('../assets/crowd2.jpg');
     background-size: cover;
@@ -178,6 +189,10 @@ body {
   margin-right: 1em;
   border-radius: 10px !important;
   box-shadow: 2px 2px 10px #2d1c31;
+}
+
+.results-buttons .btn:focus {
+  outline: none;
 }
 
 .shadow {
@@ -238,4 +253,71 @@ body {
   color:#FFFFFF;
 }
 
-.f
+
+/* PULSE */
+.down {
+  display: flex;
+  justify-content: center;
+  padding-bottom: 3vh;
+}
+.fa-chevron-down {
+  color: #90589A;
+}
+
+@-webkit-keyframes pulse {
+  0% {
+    -webkit-transform: scale(1.1);
+    transform: scale(1.1);
+  }
+
+  50% {
+    -webkit-transform: scale(0.8);
+    transform: scale(0.8);
+  }
+
+  100% {
+    -webkit-transform: scale(1.1);
+    transform: scale(1.1);
+  }
+}
+
+@keyframes pulse {
+  0% {
+    -webkit-transform: scale(1.1);
+    -ms-transform: scale(1.1);
+    transform: scale(1.1);
+  }
+
+  50% {
+    -webkit-transform: scale(0.8);
+    -ms-transform: scale(0.8);
+    transform: scale(0.8);
+  }
+
+  100% {
+    -webkit-transform: scale(1.1);
+    -ms-transform: scale(1.1);
+    transform: scale(1.1);
+  }
+}
+
+.faa-pulse.animated,
+.faa-pulse.animated-hover:hover,
+.faa-parent.animated-hover:hover > .faa-pulse {
+  -webkit-animation: pulse 2s linear infinite;
+  animation: pulse 2s linear infinite;
+}
+
+.faa-pulse.animated.faa-fast,
+.faa-pulse.animated-hover.faa-fast:hover,
+.faa-parent.animated-hover:hover > .faa-pulse.faa-fast {
+  -webkit-animation: pulse 1s linear infinite;
+  animation: pulse 1s linear infinite;
+}
+
+.faa-pulse.animated.faa-slow,
+.faa-pulse.animated-hover.faa-slow:hover,
+.faa-parent.animated-hover:hover > .faa-pulse.faa-slow {
+  -webkit-animation: pulse 3s linear infinite;
+  animation: pulse 3s linear infinite;
+}

@@ -49,6 +49,10 @@ width:100%;
     border-radius: 10px !important;
 
 }
+
+.form-group .btn:focus {
+  outline: none;
+}
 /*#form-buscar >.form-group >.input-group > .form-control :focus {
     box-shadow: 6px 6px 10px #2d1c31;
 }*/
@@ -74,7 +78,6 @@ width:100%;
   width: 100vw;
   height: 45vh;
 }
-.aboutUs{}
 
 .profilePicture {
   width:100px;
@@ -102,10 +105,9 @@ width:100%;
   font-size: 25px;
 }
 .catButtons {
-  padding-top: 7vh;
-  padding-bottom: 17vh;
+  padding-top: 3vh;
+  padding-bottom: 4vh;
   text-align: center;
-  border-bottom: 2px solid #90589A;
 }
 .catButtons .btn {
   font-size: 27px;
@@ -115,6 +117,10 @@ width:100%;
   border: 2px solid #90589A;
   border-radius: 10px !important;
   box-shadow: 2px 2px 10px #2d1c31;
+}
+
+.catButtons .btn:focus {
+  outline: none;
 }
 .catButtons .lastBtn {
   margin-right: 0px;
@@ -129,9 +135,10 @@ width:100%;
   width:23px;
 }
 .aboutUsHeader {
+  border-top: 2px solid #90589A;
   text-align: center;
   font-size: 25px;
-  /*color:#90589A;*/
+  width: 100vw;
   margin:15px 0;
 }
 .catBlurb {
@@ -196,9 +203,17 @@ button.btn.btn-default.dropdown-toggle {
     border: 2px solid #90589A;
     border-radius: 10px !important;
 }
-.glyphicon-map-marker {
-  color: white;
+.fa-map-marker {
+  margin-top: -3px;
+  color: #FFFFFF;
 }
+
+.fa-refresh {
+  margin-top: -3px;
+  color: #FFFFFF;
+}
+
+
 .fbLogin {
   text-align: center;
 }
