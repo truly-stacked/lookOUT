@@ -229,6 +229,7 @@ body {
     .search-input {
       width: 70vw !important;
     }
+
 }
 
 /*Results Page================================================================*/
@@ -310,6 +311,15 @@ body {
   background-color: #2d1c31;
   color:#FFFFFF;
 }
+
+@media only screen
+  and (min-device-width: 375px)
+  and (max-device-width: 667px)
+  and (-webkit-min-device-pixel-ratio: 2) {
+    .results-buttons {
+      display: none;
+    }
+  }
 
 
 /* PULSE */
