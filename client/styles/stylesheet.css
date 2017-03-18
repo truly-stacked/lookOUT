@@ -144,6 +144,11 @@ body {
   color: #FFFFFF;
 }
 /*Splash Page===================================================================*/
+
+
+.navbar {
+  margin-bottom: 0px;
+}
 .splashPageImg {
     width: 100vw;
     height: 60vh;
@@ -151,13 +156,23 @@ body {
     background-image: url('../assets/crowd2.jpg');
     background-size: cover;
     box-shadow: 2px 0px 10px #2d1c31;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
 }
 
-.navbar {
-  margin-bottom: 0px;
+.search-input {
+  height: 40px;
+  width: 40vw !important;
+  box-shadow: 6px 6px 10px #2d1c31;
+  font-size: 16px;
+  font-weight: 300;
+  border: .5px solid #90589A;
+  border-radius: 10px !important;
 }
-
 .searchHeader {
+  color: #FFFFFF;
   font-size: 4em;
   text-shadow: 1px 1px 1px #7D5C87;
 }
@@ -165,12 +180,55 @@ body {
 .searchSubHeader {
   color: #FFFFFF;
   font-size: 1.5em;
-  margin-bottom: 2%;
-  margin-top: 3%;
   text-shadow: 1px 1px 1px #7D5C87;
 }
 .splashSearch {
   height:10px;
+}
+
+.splash-submit {
+  border-color: #90589A;
+  background-color: #90589A;
+  box-shadow: 6px 6px 10px #2d1c31;
+  color: #FFFFFF;
+  height: 40px;
+  font-size: 16px;
+  font-weight: 300;
+  margin-left: 1vw;
+  border: 2px solid #90589A;
+  border-radius: 10px !important;
+}
+
+@media only screen
+  and (min-device-width: 375px)
+  and (max-device-width: 667px)
+  and (-webkit-min-device-pixel-ratio: 2) {
+    .catButtons .btn {
+      margin-bottom: 5%;
+    }
+    .copyright {
+      position: absolute;
+      bottom: -180%;
+    }
+    .searchHeader {
+      font-size: 2.3em;
+      margin-bottom: 5%;
+    }
+    .searchSubHeader {
+      font-size: 1em ;
+    }
+    .splash-form {
+      display: flex;
+      flex-direction: row;
+      margin-top: 5%;
+      width: 100%;
+    }
+    #stalkButton {
+      display: none;
+    }
+    .search-input {
+      width: 70vw !important;
+    }
 }
 
 /*Results Page================================================================*/
