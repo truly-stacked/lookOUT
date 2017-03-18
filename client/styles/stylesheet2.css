@@ -78,7 +78,6 @@ width:100%;
   width: 100vw;
   height: 45vh;
 }
-.aboutUs{}
 
 .profilePicture {
   width:100px;
@@ -106,10 +105,9 @@ width:100%;
   font-size: 25px;
 }
 .catButtons {
-  padding-top: 7vh;
-  padding-bottom: 17vh;
+  padding-top: 3vh;
+  padding-bottom: 7vh;
   text-align: center;
-  border-bottom: 2px solid #90589A;
 }
 .catButtons .btn {
   font-size: 27px;
@@ -137,9 +135,10 @@ width:100%;
   width:23px;
 }
 .aboutUsHeader {
+  border-top: 2px solid #90589A;
   text-align: center;
   font-size: 25px;
-  /*color:#90589A;*/
+  width: 100vw;
   margin:15px 0;
 }
 .catBlurb {
