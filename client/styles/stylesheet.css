@@ -255,7 +255,11 @@ body {
 
 
 /* PULSE */
-
+.down {
+  display: flex;
+  justify-content: center;
+  padding-bottom: 3vh;
+}
 .fa-chevron-down {
   color: #90589A;
 }
