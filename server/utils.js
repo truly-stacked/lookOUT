@@ -14,7 +14,7 @@ module.exports.createApp = function (){
 const app = express(),
   secret = process.env.secret;
   database = process.env.mongodbUrl;
-  console.log(database)
+  console.log(database);
 
 // initial setup of application
   app.set('superSecret', secret);
