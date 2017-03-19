@@ -122,6 +122,10 @@ width:100%;
 .catButtons .btn:focus {
   outline: none;
 }
+.catButtons .btn:hover {
+  transition: all 300ms ease-in-out;
+  transform: scale(1.05);
+}
 .catButtons .lastBtn {
   margin-right: 0px;
 }

@@ -26,15 +26,15 @@
   <div class="container">
     <div ng-click="openEvent(result)" ng-repeat="result in results | orderBy: 'distance'">
       <div ng-model="resultsCard" ng-mouseover="hover = true" ng-mouseleave="hover = false" class="col-xs-18 col-sm-6 col-md-4">
-        <div ng-class="{shadow: hover}" class="thumbnail">
+        <div ng-class="{shadow: hover, resultsCard: true}" class="thumbnail">
           <img class='card-image' src= {{result.cardImage}} alt="picture">
           <div class="caption">
             <h4 class='cardName'>{{result.shortName}}</h4>
-            <a href="#" class="btn btn-default btn-xs pull-right" role="button">
+            <a class="btn btn-default btn-xs pull-right">
               {{result.time | date : "h:mm a"}}
             </a>
-            <span href="#" class="catName btn btn-xs" role="button">{{result.catName}}</span>
-            <span href="#" class="btn btn-default btn-xs" role="button">{{result.distance}}</span>
+            <span  class="catName btn btn-xs" >{{result.catName}}</span>
+            <span  class="btn btn-default btn-xs" >{{result.distance}}</span>
           </div>
         </div>
       </div>
