@@ -21,7 +21,7 @@ angular.module('lookoutApp.results', [])
     $scope.location = resultsFactory.location;
     console.log($scope.location);
     dataFactory.getFiltered(category, $scope.location).then(function(results) {
-      console.log('Here are the results:', results)
+      console.log('Here are the results:', results);
       $scope.results = results.data;
     })
   }

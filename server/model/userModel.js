@@ -1,36 +1,25 @@
-// const mongoose = require ('mongoose');
-// 	Schema = mongoose.Schema,
-// 	bcrypt = require('bcrypt-nodejs');
-//
-//
-// var UserSchema = new Schema({
-// 	name: {
-// 		type: String,
-// 		unique: true,
-// 		required: true
-// 	},
-//
-// 	password: {
-// 		type: String,
-// 		required: true
-// 	},
-//
-// 	first: {
-// 		type: String,
-// 		unique: true,
-// 		required: true
-// 	},
-//
-// 	last: {
-// 		type: String,
-// 		unique: true,
-// 		required: true
-// 	},
-//
-// 	personalTracking : {Object}
-//
-// });
-//
+const mongoose = require ('mongoose'),
+    Schema = mongoose.Schema,
+    ObjectId = Schema.ObjectId,
+	bcrypt = require('bcryptjs');
+
+
+module.exports.User = mongoose.model('users', new Schema({
+	id: ObjectId,
+	username: {type: String, unique: true, required: true },
+	password: {type: String, required: true },
+}));
+
+module.exports.createUser = function (newUser, callback){
+	bcrypt.genSalt(10, function (err, salt){
+		bcrypt.hash(newUser.password, salt, function (err, hash){
+			newUser.password = hash;
+			newUser.save(callback);
+		});
+	});
+};
+
+
 //
 // //hashing and comparing  methods
 // //Saves the user. Because we dont want to store real
@@ -69,4 +58,5 @@
 //
 //
 //
-// module.exports = mongoose.model('User', UserSchema);
+
+
