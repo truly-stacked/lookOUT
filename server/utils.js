@@ -1,10 +1,16 @@
 
 const express = require('express'),
+  path = require ('path'),
+  cookieParser = require ('cookie-parser'),
+  expressHandlebar = require('express-handlebars'),
+  expressValidator = require('express-validator'),
+  flash = require ('connect-flash'),
+  session = require ('express-session'),
   morgan = require ('morgan'),
   bodyParser = require('body-parser'),
-  // jwt = require('jsonwebtoken'),
-  // passport = require('passport'),
-  // User = require('./model/userModel'),
+  passport = require ('passport'),
+  // session = require('express-session'),
+  LocalStrategy = require ('passport-local').Strategy,
   mongoose = require('mongoose');
 
 
@@ -17,31 +23,65 @@ const app = express(),
   console.log(database);
 
 // initial setup of application
-  app.set('superSecret', secret);
-  app.use(morgan('dev'));
-  // app.use(passport.initialize());
-  app.use(bodyParser.json());
-  app.use(bodyParser.urlencoded({extended:false}));
+
+ 
+
+
+// View Engine
+  //app.set('client', path.join(__dirname, 'views'));
   app.use(express.static('./client'));
-
-
-
+  app.engine('handlebars', expressHandlebar({defaultLayout: 'layout'}));
+  app.set('view engine', 'handlebars');
 
 // Middlewares
+  app.use(morgan('dev'));
+  app.use(bodyParser.json());
+  app.use(bodyParser.urlencoded({extended:false}));
+  app.use(cookieParser());
 
-// function isLoggedIn(req,res,next){
-//
-//   if(req.isAuthenticated())
-//     return next();
-//
-//   res.redirect('/');
-//
-//
-// }
+  app.use(session ({
+    secret: 'MikeThinkFWD',
+    saveUninitialized: true, 
+    resave: true
+  }));
 
+//passport initialize
+  app.use(passport.initialize());
+  app.use(passport.session());
 
+//Express Validator
+app.use(expressValidator({
+  errorFormatter: function(param, msg, value) {
+      var namespace = param.split('.'),
+       root    = namespace.shift(),
+       formParam = root;
+
+    while(namespace.length) {
+      formParam += '[' + namespace.shift() + ']';
+    }
+    return {
+      param : formParam,
+      msg   : msg,
+      value : value
+    };
+  }
+}));
+
+//Connect Flash
+app.use(flash());
+
+// Global Variables
+app.use(function (req, res, next){
+
+  res.locals.success_msg = req.flash('success_msg');
+  res.locals.error_msg = req.flash('error_msg');
+  res.locals.error = req.flash('error');
+  next();
+
+});
 
 // Connect to mongo DB
+mongoose.Promise = global.Promise;
 mongoose.connect(database, function(err) {
     if (err) {
       console.log('Fail, did not connect');
