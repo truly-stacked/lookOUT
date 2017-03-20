@@ -264,7 +264,9 @@ body {
       display: none;
     }
     .search-input {
+      margin-left: 1%;
       width: 70vw !important;
+      border-radius: 10px;
     }
 
 }
