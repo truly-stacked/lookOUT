@@ -32,7 +32,7 @@ freeby is the premier event finding app that will help everyone in their journey
 
 ### Event View
 
-![alt text](http://imgur.com/a/wshUI)
+![alt text](http://imgur.com/kzpEn7B)
 
 ## Contributing
 
