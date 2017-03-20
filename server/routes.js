@@ -11,11 +11,12 @@ const NodeGeocoder = require('node-geocoder'),
 
 
 
+
 module.exports = function (app, express) {
 
   app.post('/register', (req, res) => {
-    
-    let username = req.body.username, 
+
+    let username = req.body.username,
     password = req.body.password;
 
     //Validation
@@ -30,9 +31,10 @@ module.exports = function (app, express) {
     } else {
       console.log('PASSED');
       let newUser = new model.User ({
-        username : username, 
+        username : username,
         password : password
       });
+
 
       model.createUser(newUser, function(err, user){
         if(err) throw err;
@@ -44,12 +46,14 @@ module.exports = function (app, express) {
       res.json(username);
     }
 
-    
+
+
+
   });
 
 // Able to post into dabase for 1 entry, but not fully functional yet
   app.post('/register', function (req, res){
-    let name = req.query.username, 
+    let name = req.query.username,
     password = req.query.password;
 
     console.log('---->',name,passwrod);
@@ -183,6 +187,7 @@ app.get('/filtered', (req, res) => {
 });
 
 // AUTH
+
 
 
 
