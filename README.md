@@ -8,7 +8,7 @@
 1. [Team](#team)
 1. [Contributing](#contributing)
 
-#Description
+##Description
 
 Visiting a new city and don’t know what to do? Currently living in a city and want to find fun events for your family and friends? Better yet, want them to be free? If these are true, then we have the app for you.
 
