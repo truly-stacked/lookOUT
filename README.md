@@ -24,15 +24,15 @@ freeby is the premier event finding app that will help everyone in their journey
 
 ### Index Vew
 
-![alt text](https://freeby.herokuapp.com/client/assets/front.PNG)
+![alt text](http://imgur.com/a/Wh12F)
 
 ### Results View
 
-![alt text](https://freeby.herokuapp.com/client/assets/ResultsView.PNG)
+![alt text](http://imgur.com/a/BwzRw)
 
 ### Event View
 
-![alt text](https://freeby.herokuapp.com/client/assets/EventView.PNG)
+![alt text](http://imgur.com/a/wshUI)
 
 ## Contributing
 
