@@ -20,6 +20,19 @@ freeby is the premier event finding app that will help everyone in their journey
   - __Scrum Master__: Michael Chan
   - __Development Team Members__: Kyle Greene, Jared Engel
 
+## Screen Capture
+
+### Index Vew
+
+![alt text](https://freeby.herokuapp.com/client/assets/front.PNG)
+
+### Results View
+
+![alt text](https://freeby.herokuapp.com/client/assets/ResultsView.PNG)
+
+### Event View
+
+![alt text](https://freeby.herokuapp.com/client/assets/EventView.PNG)
 
 ## Contributing
 
