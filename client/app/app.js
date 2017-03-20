@@ -42,8 +42,6 @@ angular.module('lookoutApp',[
       })
       .then(
       function(results){
-        //Successful get request function and message
-        console.log("Got all events!");
         return results
       })
       .catch(
@@ -60,8 +58,6 @@ angular.module('lookoutApp',[
       })
       .then(
         function(results){
-          //Successful get request function and message
-          console.log("Got filtered events!");
           return results
         })
         .catch(
@@ -78,8 +74,6 @@ angular.module('lookoutApp',[
         })
         .then(
           function(result){
-            //Successful get request function and message
-            console.log("Got a single event!");
             return result
           })
         .catch(
