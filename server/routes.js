@@ -1,98 +1,60 @@
 const NodeGeocoder = require('node-geocoder'),
   request = require ('request'),
   express = require('express'),
-  passport = require('passport'),
   satelize = require('satelize'),
   compare = require('compare-lat-lon'),
   utils = require('./utils.js'),
   options = {provider: 'google', httpAdapter: 'https', formatter: null},
-  geocoder = NodeGeocoder (options);
-
+  geocoder = NodeGeocoder (options),
+  model = require ('./model/userModel.js'),
   oAuthKey = process.env.oAuthKey;
 
 
 
-  // var apiroutes = express.Router();
-  //
-  // apiroutes.post('/signup', function(req,res){
-  //   console.log("Im in this.")
-  //   if(!req.body.name || !req.body.password){
-  //     res.json({success: false, msg: 'Please give and name and password'});
-  //   }else{
-  //     var newUser = new User({
-  //       name: req.body.name,
-  //       password: req.body.password
-  //     });
-  //
-  //     newUser.save(function(err){
-  //       if (err){
-  //         return res.json({success: false, msg: 'User already exists'});
-  //       }
-  //         res.json({success: true, msg: 'Successful created user.'});
-  //     });
-  //   }
-  // });
-  //
-  // apiroutes.post('/authenticate', function(req,res){
-  //   User.findOne({
-  //     name: req.body.name
-  //   }, function(err,user){
-  //     if (err) throw err;
-  //
-  //     if(!user){
-  //       res.send({success: false, msg: 'This user wasnt found'});
-  //     } else{
-  //       user.comparePassword(req.body.password, function(err, match){
-  //         if(match && !err){
-  //           var token = jwt.encode(user, process.env.secret);
-  //           res.json({success: true, token: 'JWT' + token});
-  //         }else{
-  //           res.send({success:false, msg: 'Wrong Password'});
-  //         }
-  //       });
-  //     }
-  //   });
-  // });
-  //
-  // apiroutes.get('/memberinfo', passport.authenticate('jwt', {session:false}), function(req,res){
-  //   var token = getToken(req.headers);
-  //   if(token){
-  //     var decoded = jwt.decode(token, config.secret);
-  //     User.findOne({
-  //       name:decoded.name
-  //     }, function(err,user){
-  //       if (err) throw err;
-  //
-  //       if(!user){
-  //         return res.status(403).send({success:false, msg: 'User not found.'});
-  //       } else{
-  //         res.json({success: true, msg: 'Welcome!'});
-  //       }
-  //     });
-  //   }else{
-  //     return res.status(403).send({success:false, msg: 'No token!'});
-  //   }
-  // });
-  //
-  //
-  // getToken = function(headers){
-  //   if(headers && headers.authorization){
-  //     var parted = headers.authorization.split(' ');
-  //     if(parted.length === 2){
-  //       return parted[1]
-  //     }else{
-  //       return null;
-  //     }
-  //   }else{
-  //     return null;
-  //   }
-  // };
-
-
-
-
-
 module.exports = function (app, express) {
+
+  app.post('/register', (req, res) => {
+    
+    let username = req.body.username, 
+    password = req.body.password;
+
+    //Validation
+    req.checkBody('username', 'Name is Required').notEmpty();
+    req.checkBody('password', 'Password is required').notEmpty();
+
+    let errors = req.validationErrors();
+
+    if(errors){
+      console.log('YES');
+      res.json(errors);
+    } else {
+      console.log('PASSED');
+      let newUser = new model.User ({
+        username : username, 
+        password : password
+      });
+
+      model.createUser(newUser, function(err, user){
+        if(err) throw err;
+        console.log(user);
+      });
+
+      req.flash('success_msg', 'You are registered');
+
+      res.json(username);
+    }
+
+    
+  });
+
+// Able to post into dabase for 1 entry, but not fully functional yet
+  app.post('/register', function (req, res){
+    let name = req.query.username, 
+    password = req.query.password;
+
+    console.log('---->',name,passwrod);
+    res.json(name);
+  });
 
 
 app.get('/results', (req, res) => {
@@ -218,11 +180,9 @@ app.get('/filtered', (req, res) => {
       }
     });
   });
-  });
+});
 
 // AUTH
-
-
 
 
 
