@@ -6,6 +6,7 @@ angular.module('lookoutApp',[
   'ngRoute'
 ])
   .config( function($routeProvider){
+    //Routes set up here!
     $routeProvider
       .when('/', {
         templateUrl: 'app/splash/splash.html',

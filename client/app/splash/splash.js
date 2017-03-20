@@ -18,6 +18,7 @@ angular.module('lookoutApp.splash', [])
   };
 
   $scope.getLocation = function (){
+    //this is the function we call in the front to get current location!
     if (navigator.geolocation) {
          navigator.geolocation.getCurrentPosition(this.showPosition, this.showError);
      } else {
@@ -26,6 +27,8 @@ angular.module('lookoutApp.splash', [])
   };
 
   $scope.showPosition = function(position) {
+    //This function is what is used to display the input geolocation/address in
+    //the search bar.
     dataFactory.getAddress(position.coords.latitude, position.coords.longitude).then(function(results) {
       $scope.address = results.data.results[0].formatted_address;
       $scope.getEvents($scope.address);
