@@ -47,13 +47,14 @@ module.exports = function (app, express) {
     
   });
 
-  // app.post('/register', function (req, res){
-  //   let name = req.query.username, 
-  //   password = req.query.password;
+// Able to post into dabase for 1 entry, but not fully functional yet
+  app.post('/register', function (req, res){
+    let name = req.query.username, 
+    password = req.query.password;
 
-  //   console.log('---->',name,passwrod);
-  //   res.json(name);
-  // });
+    console.log('---->',name,passwrod);
+    res.json(name);
+  });
 
 
 app.get('/results', (req, res) => {

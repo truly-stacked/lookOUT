@@ -4,12 +4,11 @@ const express = require('express'),
   cookieParser = require ('cookie-parser'),
   expressHandlebar = require('express-handlebars'),
   expressValidator = require('express-validator'),
-  //flash = require ('connect-flash'),
-  //session = require ('express-session'),
+  flash = require ('connect-flash'),
+  session = require ('express-session'),
   morgan = require ('morgan'),
   bodyParser = require('body-parser'),
-  //passport = require ('passport'),
-  // session = require('express-session'),
+  passport = require ('passport'),
   LocalStrategy = require ('passport-local').Strategy,
   mongoose = require('mongoose');
 
@@ -67,7 +66,7 @@ app.use(expressValidator({
   }
 }));
 
-//Connect Flash
+//Connect Flash -- Feature not implemented yet
 app.use(flash());
 
 // Global Variables
@@ -97,7 +96,8 @@ require('./routes.js')(app, express);
 return app;
 };
 
-
+//checked if any value is null. It will replace the null with a TBD.
+// Used recussion to go through each element.
 module.exports.nullChecker = function (event, arrayKeys){
   let solution = "",
     position = 0,
