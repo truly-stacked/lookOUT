@@ -29,12 +29,7 @@ angular.module('lookoutApp.splash', [])
     dataFactory.getAddress(position.coords.latitude, position.coords.longitude).then(function(results) {
       $scope.address = results.data.results[0].formatted_address;
       $scope.getEvents($scope.address);
-      console.log($scope.address);
     })
-    // console.log(position);
-    // console.log(position.coords.latitude);
-    // console.log(position.coords.longitude);
-    // console.log(typeof 'http://maps.googleapis.com/maps/api/geocode/json?latlng=37.76893497,-122.42284884&sensor=false');
   };
 
   $scope.showError = function(error) {
