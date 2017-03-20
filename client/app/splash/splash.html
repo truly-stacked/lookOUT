@@ -28,11 +28,11 @@
   <form class="form-inline splash-form"  ng-submit="searching = true; getEvents(location)">
     <div class="form-group">
       <button type="button" id='stalkButton' class="btn btn-default btn-sm pull-left" ng-click="locating = true; getLocation()">
-        <i ng-class="{'fa fa-map-marker fa-2x fa-fw': !locating, 'fa fa-refresh fa-spin fa-2x fa-fw': locating }" aria-hidden="true"></i>
+        <i ng-class="{'fa fa-location-arrow fa-2x fa-fw': !locating, 'fa fa-refresh fa-spin fa-2x fa-fw': locating }" aria-hidden="true"></i>
       </button>
     </div>
     <div class="form-group">
-      <input class="form-control search-input" ng-model="location" type="text" name="search" placeholder="Where are you?" value="{{ address }}" required/>
+      <input class="search-input" ng-model="location" type="text" name="search" placeholder="  Where are you?" value="{{ address }}" required/>
     </div>
     <div class="form-group">
       <button class="btn splash-submit" type="submit">
