@@ -8,6 +8,7 @@
         <input type="text" class="form-control" ng-model="location" placeholder="Add your location..." name="q">
         <div class="input-group-btn">
           <button class="search-btn btn btn-default" type="submit"><i class="glyphicon glyphicon-search search-icon"></i></button>
+          <!-- above is the search navbar displayed on all but the splash page. -->
         </div>
       </div>
     </form>
@@ -23,11 +24,16 @@
 </div>
 <div class="filter-results">
   <input class="filter-input form-control" type="text" ng-model="searchText" placeholder="Filter...">
+  <!-- this is the live filter to sort events on the fly, pretty cool if you ask us! -->
 </div>
 
 <div class="results-container">
   <div class="container">
     <div ng-click="openEvent(result)" ng-repeat="result in results | orderBy: 'distance' | filter : searchText">
+      <!-- the line directly above is what 'ng-repeats' each event into its
+            very own card!
+
+            below is the HTML that makes up the card view 👍-->
       <div ng-model="resultsCard" ng-mouseover="hover = true" ng-mouseleave="hover = false" class="col-xs-18 col-sm-6 col-md-4">
         <div ng-class="{shadow: hover, resultsCard: true}" class="thumbnail">
           <img class='card-image' src= {{result.cardImage}} alt="picture">
@@ -35,6 +41,7 @@
             <h4 class='cardName'>{{result.shortName}}</h4>
             <a class="btn btn-default btn-xs pull-right">
               {{result.time | date : "h:mm a"}}
+              <!--Angular time piping above-->
             </a>
             <span  class="catName btn btn-xs" >{{result.catName}}</span>
             <span  class="btn btn-default btn-xs" >{{result.distance}}</span>

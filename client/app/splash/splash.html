@@ -19,14 +19,22 @@
 </nav>
 
 
+<!--ATTENTION DEVELOPERS: Read the roadmap please!-->
+
+
+<!-- This is where the page image is set. To change it go to the stylesheet "splashPageImg"
+      and change the url.-->
 <div class="splashPageImg">
   <div class="splash-title">
+    <!-- Overlay for the image lives here -->
     <div class="searchHeader">What's happening today?</div>
     <div class='searchSubHeader'>Enter your address below.</div>
   </div>
-
+  <!-- This is where the seach bar is. -->
   <form class="form-inline splash-form"  ng-submit="searching = true; getEvents(location)">
     <div class="form-group">
+      <!-- The stalk button is not as creepy as it sounds, it it what is responsible for getting geo-location.
+            We like to have fun ;)-->
       <button type="button" id='stalkButton' class="btn btn-default btn-sm pull-left" ng-click="locating = true; getLocation()">
         <i ng-class="{'fa fa-location-arrow fa-2x fa-fw': !locating, 'fa fa-refresh fa-spin fa-2x fa-fw': locating }" aria-hidden="true"></i>
       </button>
@@ -49,13 +57,18 @@
     <hr class='event-hr splashHr'>
   </div>
   <div class="catButtons">
-    <!-- <button class="btn" ng-click="getFilteredEvents(109)">Travel</button> -->
+    <!-- <button class="btn" ng-click="getFilteredEvents(109)">Travel</button>
+
+          these are the catagory sorting buttons, above is an unused "travel"
+          button, they make a call to the EventBright api through our server.-->
     <button class="btn" ng-click="getFilteredEvents(103)">Music</button>
     <button class="btn" ng-click="getFilteredEvents(110)">Food & Drink</button>
     <button class="btn" ng-click="getFilteredEvents(102)">Tech</button>
     <button class="btn lastBtn" ng-click="getFilteredEvents(104)">Film & Media</button>
   </div>
   <div class="down"><i class="icon fa fa-chevron-down faa-pulse animated" aria-hidden="true"></i></div>
+  <!-- This is the about us section, it is a simple bootStrap row with a div for
+        each developer. Please add your selves using the format below. :) -->
   <div class="row aboutUs">
     <div class='aboutUsHeader'>Development Team</div>
     <div class='Developer col-sm-3'>
