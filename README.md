@@ -1,6 +1,5 @@
 # Freeby
-> Backbone.js To The Future.
-> Greenfield Project Description
+
 
 ## Table of Contents
 
