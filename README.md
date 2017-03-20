@@ -24,11 +24,11 @@ freeby is the premier event finding app that will help everyone in their journey
 
 ### Index Vew
 
-![alt text](http://imgur.com/a/Wh12F.jpg)
+![alt text](http://imgur.com/p66aWNG.jpg)
 
 ### Results View
 
-![alt text](http://imgur.com/a/BwzRw.jpg)
+![alt text](http://imgur.com/y3KScOM.jpg)
 
 ### Event View
 
