@@ -12,16 +12,16 @@ angular.module('lookoutApp.results', [])
   }
 
   $scope.openEvent = function(event){
+    //simply directs to the events fullpage view
     eventFactory.insertEvent(event);
     $location.path('/event');
   }
 
   $scope.getFilteredEvents = function(category) {
-    console.log("Getting into filtered events...");
+    //responsible for filtering a list of events by category. See EventBright
+    //API for category number meanings.
     $scope.location = resultsFactory.location;
-    console.log($scope.location);
     dataFactory.getFiltered(category, $scope.location).then(function(results) {
-      console.log('Here are the results:', results)
       $scope.results = results.data;
     })
   }
