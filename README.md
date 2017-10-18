@@ -15,7 +15,7 @@ freeby is the premier event finding app that will help everyone in their journey
 
  - __Product Owner__: JP Marra
   - __Scrum Master__: Michael Chan
-  - __Development Team Members__: Kyle Greene, Jared Engel
+  - __Development Team Members__: Kyle Greene, Jarett Engdahl
 
 ## Screen Capture
 
